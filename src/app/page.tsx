@@ -1,4 +1,17 @@
 import React from "react";
+import Image from "next/image";
+import { Parisienne } from "next/font/google";
+import localFont from "next/font/local";
+
+const parisienne = Parisienne({ weight: "400", subsets: ["latin"] });
+const metropolis = localFont({
+  src: [
+    { path: "./fonts/Metropolis-Regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/Metropolis-Medium.otf", weight: "500", style: "normal" },
+    // { path: "./fonts/Metropolis-SemiBold.otf", weight: "600", style: "normal" },
+  ],
+  display: "swap",
+});
 
 // Home page layout matching the provided mockup (structure + placeholders only)
 // — Texts are taken from the mockup; images are left as empty slots you can fill (SVG/PNG)
@@ -62,59 +75,74 @@ export default function HomePage() {
 
       <main id="home">
         {/* Hero */}
-        <section className="relative">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-20 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                ELIGE LA JOYA PERFECTA PARA TI O PARA <br /> TUS SERES QUERIDOS.
-              </h1>
-              <p className="mt-4 text-slate-600">
-                Hecha un vistazo a nuestras colecciones destacadas
-              </p>
-              <div className="mt-6 flex gap-3">
-                <a
-                  href="#colecciones"
-                  className="inline-flex h-11 items-center px-6 rounded bg-black text-white text-sm font-medium"
-                >
-                  VER LAS COLECCIONES
-                </a>
-                {/* Secondary CTA slot */}
-                <button className="h-11 px-6 rounded border border-slate-300 text-sm">
-                  CTA secundaria
-                </button>
-              </div>
-            </div>
-            <div className="order-1 lg:order-2">
-              {/* Hero image slot */}
-              <div className="aspect-[16/10] w-full rounded-xl bg-slate-100 border border-slate-200 grid place-items-center text-slate-400">
-                HERO IMG
-              </div>
+        <section className="relative overflow-hidden">
+          {/* Лента на всю ширину окна */}
+          <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+            {/* Контейнер высоты баннера (как в макете — низкая панорама) */}
+            <div className="relative h-[320px] sm:h-[380px] md:h-[460px] lg:h-[520px]">
+              <Image
+                src="/assets/hero.png"
+                alt="Joyas Rodriguez — colección"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+              />
+              {/* Нежная вуаль для читаемости текста */}
+              <div className="absolute inset-0 bg-black/10"></div>
             </div>
           </div>
-        </section>
 
-        {/* Divider message / tagline card */}
-        <section className="py-6">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl font-semibold">
-              Cada Joya cuenta{" "}
-              <span className="italic font-normal">una historia</span>
-            </h2>
-            <div className="mt-4 flex items-center justify-center gap-3">
-              <a
-                href="#shop-collection"
-                className="inline-flex h-10 items-center px-5 rounded border border-slate-300 text-sm"
-              >
-                SHOP COLLECTION
-              </a>
+          {/* Текст слева поверх (как в макете) */}
+          <div className="pointer-events-none absolute inset-0">
+            <div className="pointer-events-auto mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
+              {/* Смещаем блок немного вниз, чтобы попасть в ту же вертикаль, что и макет */}
+              <div className="h-full flex items-start pt-10 sm:pt-14 md:pt-16">
+                <div className="max-w-2xl">
+                  <div className="text-white">
+                    <div className={`grid grid-cols-2`}>
+                      {/* строка 1: занимает всю ширину */}
+                      <div
+                        className={`${parisienne.className} col-span-2 leading-none text-4xl sm:text-5xl md:text-6xl`}
+                      >
+                        Cada Joya cuenta
+                      </div>
+                      {/* строка 2: начинается со второй половины контейнера */}
+                      <div
+                        className={`${parisienne.className} col-start-2 inline-block leading-none mt-1 sm:mt-2 text-4xl sm:text-5xl md:text-6xl italic
+              -translate-x-2 sm:-translate-x-10 md:-translate-x-12
+              -translate-y-1 sm:-translate-y-2 md:-translate-y-3`}
+                      >
+                        una historia
+                      </div>
+                    </div>
+                  </div>
+
+                  <p
+                    className={`${metropolis.className} mt-3 sm:mt-4 text-white/95 text-[12px] sm:text-[13px] md:text-[14px] lg:text-[px] max-w-2xl `}
+                  >
+                    Joyas Rodriguez es más que una marca: es una fuente de
+                    inspiración y<br /> empoderamiento. Cada pieza de Joyas Rodriguez
+                    cuenta una historia<br /> única y captura la esencia de la belleza
+                    y la gracia.
+                  </p>
+
+                  <div className="mt-6">
+                    <a
+                      href="#shop-collection"
+                      className={`${metropolis.className}
+                  inline-flex h-11 items-center px-6 rounded-none
+              border border-white text-white bg-transparent font-medium tracking-wide
+              cursor-pointer transition-colors duration-200
+              hover:bg-white hover:text-brand
+                  translate-x-58`}
+                    >
+                      SHOP COLLECTION
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="mt-6 text-slate-600 max-w-3xl mx-auto">
-              Joyas Rodriguez es más que una marca: es una fuente de inspiración
-              y empoderamiento.
-              <br />
-              Cada pieza de Joyas Rodriguez cuenta una historia única y captura
-              la esencia de la belleza y la gracia.
-            </p>
           </div>
         </section>
 
