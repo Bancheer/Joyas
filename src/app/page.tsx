@@ -22,8 +22,49 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       {/* Top promo bar */}
-      <div className="w-full bg-black text-white text-center text-xs sm:text-sm py-2 px-3">
-        Descuento Extra: Aplicado al carrito sobre dos o más artículos
+      <div className="relative w-full bg-[#B7BEE2] text-slate-900 py-2 px-3">
+        {/* соц.иконки слева, центрированы по высоте */}
+        <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-3 z-10">
+          <a
+            href="https://facebook.com/yourpage"
+            aria-label="Facebook"
+            className="p-0 hover:opacity-80 transition"
+          >
+            <Image
+              src="/icons/facebook.svg"
+              alt=""
+              width={20}
+              height={20}
+              priority
+            />
+          </a>
+          <a
+            href="https://instagram.com/yourpage"
+            aria-label="Instagram"
+            className="p-0 hover:opacity-80 transition"
+          >
+            <Image
+              src="/icons/instagram.svg"
+              alt=""
+              width={20}
+              height={20}
+              priority
+            />
+          </a>
+        </div>
+
+        {/* текст строго по центру */}
+        <div className="text-center text-[13px] sm:text-[14px]">
+          <span
+            className={`${metropolis.className} font-medium tracking-[0.02em] uppercase`}
+          >
+            DESCUENTO EXTRA:
+          </span>
+          <span className={`${metropolis.className} font-normal`}>
+            {" "}
+            Aplicado al carrito sobre dos o más artículos
+          </span>
+        </div>
       </div>
 
       {/* Header / Navigation */}
@@ -122,9 +163,9 @@ export default function HomePage() {
                     className={`${metropolis.className} mt-3 sm:mt-4 text-white/95 text-[12px] sm:text-[13px] md:text-[14px] lg:text-[px] max-w-2xl `}
                   >
                     Joyas Rodriguez es más que una marca: es una fuente de
-                    inspiración y<br /> empoderamiento. Cada pieza de Joyas Rodriguez
-                    cuenta una historia<br /> única y captura la esencia de la belleza
-                    y la gracia.
+                    inspiración y<br /> empoderamiento. Cada pieza de Joyas
+                    Rodriguez cuenta una historia
+                    <br /> única y captura la esencia de la belleza y la gracia.
                   </p>
 
                   <div className="mt-6">
