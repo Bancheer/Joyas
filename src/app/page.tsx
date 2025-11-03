@@ -68,48 +68,58 @@ export default function HomePage() {
       </div>
 
       {/* Header / Navigation */}
-      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          {/* Left: brand */}
-          <div className="flex items-center gap-3">
-            {/* Logo slot */}
-            <div className="h-10 w-10 rounded bg-slate-200 grid place-items-center text-xs text-slate-500">
-              LOGO
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+        {/* полоса на 100vw */}
+        <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+          {/* внутренняя линия с небольшими паддингами у краёв окна */}
+          <div className="relative h-16 px-3 sm:px-4 lg:px-6">
+            {/* ЛЕВО: меню тянется к левому краю */}
+            <nav className="h-full flex items-center gap-5 text-sm">
+              <a href="#home" className="hover:text-black">
+                INICIO
+              </a>
+              <a href="#joyas" className="hover:text-black">
+                JOYAS
+              </a>
+              <a href="#regalos" className="hover:text-black">
+                REGALOS
+              </a>
+              <a href="#tendencias" className="hover:text-black">
+                TENDENCIAS
+              </a>
+            </nav>
+
+            {/* ЦЕНТР: логотип + подпись — ЖЁСТКО по центру экрана */}
+            <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center">
+              <a
+                href="#home"
+                className="block"
+                aria-label="Joyas Rodriguez – logo"
+              >
+                <Image
+                  src="/icons/logo.png"
+                  alt="Joyas Rodriguez"
+                  width={300} // реальные размеры файла, пусть остаются
+                  height={64}
+                  priority
+                  className="w-[120px] sm:w-[140px] md:w-[170px] lg:w-[200px] h-auto object-contain"
+                  sizes="(max-width:640px) 140px, (max-width:768px) 160px, (max-width:1024px) 200px, 240px"
+                />
+              </a>
             </div>
-            <span className="sr-only">Joyas Rodriguez</span>
-          </div>
-          {/* Center: nav */}
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a className="hover:text-black" href="#home">
-              INICIO
-            </a>
-            <a className="hover:text-black" href="#joyas">
-              JOYAS
-            </a>
-            <a className="hover:text-black" href="#regalos">
-              REGALOS
-            </a>
-            <a className="hover:text-black" href="#tendencias">
-              TENDENCIAS
-            </a>
-            <a className="hover:text-black" href="#contacto">
-              CONTACTO
-            </a>
-            <a className="hover:text-black" href="#tracking">
-              SIGUE TU PEDIDO
-            </a>
-          </nav>
-          {/* Right: utility buttons (placeholders) */}
-          <div className="flex items-center gap-3">
-            <button className="h-9 px-3 rounded border border-slate-300 text-sm">
-              Buscar
-            </button>
-            <button className="h-9 px-3 rounded border border-slate-300 text-sm">
-              Cuenta
-            </button>
-            <button className="h-9 px-3 rounded border border-slate-300 text-sm">
-              Carrito
-            </button>
+
+            {/* ПРАВО: утилиты тянутся к правому краю */}
+            <div className="absolute inset-y-0 right-3 sm:right-4 lg:right-6 flex items-center gap-2">
+              <button className="h-9 px-3 border border-slate-300 text-sm">
+                Buscar
+              </button>
+              <button className="h-9 px-3 border border-slate-300 text-sm">
+                Cuenta
+              </button>
+              <button className="h-9 px-3 border border-slate-300 text-sm">
+                Carrito
+              </button>
+            </div>
           </div>
         </div>
       </header>
