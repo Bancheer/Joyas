@@ -221,61 +221,253 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Colecciones destacadas (3 cards) */}
-        <section id="colecciones" className="py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-              {[
-                {
-                  title: "Amor Propio",
-                  text: "Piezas que te harán brillar, exaltando el amor hacía ti misma. Celebra tu autenticidad y empoderáte con un toque de elegancia.",
-                },
-                {
-                  title: "Madre & Hija",
-                  text: "Un reflejo brillante del amor eterno que compartís como madre & hija, capturado en diseños elegantes y atemporales.",
-                },
-                {
-                  title: "Amor y Compromiso",
-                  text: "Diseños únicos que reflejan la eternidad del amor. Encuentra la joya perfecta para tu otra mitad.",
-                },
-              ].map((c, i) => (
-                <article
-                  key={i}
-                  className="rounded-2xl border border-slate-200 overflow-hidden"
-                >
-                  {/* Image slot */}
-                  <div className="aspect-[4/3] bg-slate-100 grid place-items-center text-slate-400">
-                    IMG
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-semibold">{c.title}</h3>
-                    <p className="mt-2 text-sm text-slate-600">{c.text}</p>
-                    <div className="mt-4">
-                      <a
-                        href="#"
-                        className="inline-flex h-10 items-center px-5 rounded bg-black text-white text-sm"
-                      >
-                        DESCUBRE MÁS
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              ))}
+        {/* TRUST STRIP */}
+        <section className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-[#FAFAFA]">
+          {/* верх: заголовок и звёзды */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="pt-6 pb-4 text-center">
+              <h3
+                className={`${metropolis.className} text-[13px] sm:text-[14px] tracking-wide text-slate-900`}
+              >
+                MÁS DE <span className="font-semibold">200.000</span> CLIENTES
+                SATISFECHOS
+              </h3>
+
+              <div className="mt-2 flex items-center justify-center gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Image
+                    key={i}
+                    src="/icons/star.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                    priority
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* белая линия-разделитель на всю ширину экрана */}
+          <div className="mt-4 h-px bg-white relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]" />
+
+          {/* низ: три преимущества */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="py-6 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center text-[14px] text-slate-800">
+              {/* 1 — Gift (крупнее) */}
+              <div className="flex items-center justify-center gap-4">
+                <Image
+                  src="/icons/gift.svg"
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="w-14 h-14 sm:w-16 sm:h-16 shrink-0"
+                />
+                <p className={`${metropolis.className} leading-snug`}>
+                  Caja regalo incluida en todos los pedidos
+                </p>
+              </div>
+
+              {/* 2 — Warranty */}
+              <div className="flex items-center justify-center gap-4">
+                <Image
+                  src="/icons/warranty.svg"
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="w-8 h-8 sm:w-10 sm:h-10 shrink-0"
+                />
+                <p className={`${metropolis.className} leading-snug`}>
+                  30 días de garantía
+                </p>
+              </div>
+
+              {/* 3 — Truck */}
+              <div className="flex items-center justify-center gap-4">
+                <Image
+                  src="/icons/truck.svg"
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="w-14 h-14 sm:w-16 sm:h-16 shrink-0"
+                />
+                <p className={`${metropolis.className} leading-snug`}>
+                  envío gratuito en todos los pedidos
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Historias intro */}
-        <section className="py-6">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-slate-700">
-              Historias — Cada una de nuestras piezas cuenta con su propia
-              historia, un reflejo de momentos especiales que llevarás contigo
-              para siempre.
-            </p>
+        {/* Colecciones destacadas (3 cards) */}
+        <section className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            {/* Заголовки */}
+            <header className="pt-10 sm:pt-14 text-center">
+              <h2
+                className={`${metropolis.className} text-[26px] sm:text-[34px] md:text-[40px] leading-tight tracking-wide text-slate-900 uppercase`}
+              >
+                ELIGE LA JOYA PERFECTA PARA TI O PARA
+                <br className="hidden md:block" />
+                TUS SERES QUERIDOS.
+              </h2>
+              <p className="mt-3 text-slate-500 text-[14px]">
+                Hecha un vistazo a nuestras colecciones destacadas
+              </p>
+            </header>
+
+            {/* Карточки */}
+            <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              {[
+                {
+                  tag: "LOS MÁS VENDIDOS",
+                  tagClass: "bg-[#6E7A94] text-white",
+                  src: "/collections/mas-vendidos.jpg",
+                  alt: "Colección – más vendidos",
+                },
+                {
+                  tag: "SAN VALENTÍN",
+                  tagClass: "bg-[#FF688C] text-white",
+                  src: "/collections/san-valentin.jpg",
+                  alt: "Colección – San Valentín",
+                },
+                {
+                  tag: "REGALOS",
+                  tagClass:
+                    "bg-[#B7BEE2] text-white drop-shadow-[0_1px_0_rgba(0,0,0,0.25)]",
+                  src: "/collections/regalos.jpg",
+                  alt: "Colección – regalos",
+                },
+              ].map((c, i) => (
+                <article
+                  key={i}
+                  className="group relative overflow-hidden bg-[#F7F7F7] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)]"
+                >
+                  {/* Обёртка: картинка + бейдж */}
+                  <div className="relative aspect-[4/5]">
+                    {/* Картинка (слой ниже) */}
+                    <Image
+                      src={c.src}
+                      alt={c.alt}
+                      fill
+                      priority={i === 0}
+                      sizes="(max-width:768px) 100vw, (max-width:1280px) 33vw, 33vw"
+                      className="object-cover z-0 transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                    {/* Бейдж — острые углы, поверх */}
+                    <span
+                      className={`${metropolis.className} absolute left-4 top-4 z-10 px-3 py-1 text-[11px] tracking-wide ${c.tagClass}`}
+                    >
+                      {c.tag}
+                    </span>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* Кнопка под карточками */}
+            <div className="flex justify-center py-10 sm:py-12">
+              <a
+                href="#collections"
+                className={`${metropolis.className} inline-flex items-center justify-center
+      h-10 px-7 text-[13px] uppercase font-medium tracking-wide
+      border border-slate-900 text-slate-900 rounded-none
+      transition-colors duration-200
+      hover:border-[#517EC1] hover:text-[#517EC1]
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#517EC1]/60
+      active:translate-y-[1px]`}
+              >
+                VER LAS COLECCIONES
+              </a>
+            </div>
           </div>
         </section>
 
+        {/* HISTORIAS */}
+        <section className="relative w-screen left-1/2 -translate-x-1/2 bg-white">
+          <div className="mx-auto overflow-x-auto">
+            <div className="mx-auto" style={{ width: 1200 }}>
+              <header className="pt-12 text-center">
+                <h2
+                  className={`${metropolis.className} text-[40px] leading-tight tracking-wide text-slate-900 uppercase`}
+                >
+                  HISTORIAS
+                </h2>
+                <p
+                  className={`${metropolis.className} mt-3 text-[14px] text-slate-500`}
+                >
+                  Cada una de nuestras piezas cuenta con su propia historia, un
+                  reflejo de momentos especiales que llevarás contigo para
+                  siempre.
+                </p>
+              </header>
+
+              <div className="mt-10 grid grid-cols-3 gap-24">
+                {[
+                  {
+                    title: "Amor Propio",
+                    text: "Piezas que te harán brillar, exaltando el amor hacia ti misma. Celebra tu autenticidad y empodérate con un toque de elegancia.",
+                    src: "/stories/amor-propio.jpg",
+                    alt: "Anillo en mano — Amor Propio",
+                    href: "#story-amor-propio",
+                  },
+                  {
+                    title: "Madre & Hija",
+                    text: "Un reflejo brillante del amor eterno que compartís como madre & hija, capturado en diseños elegantes y atemporales.",
+                    src: "/stories/madre-hija.jpg",
+                    alt: "Caja Joyas Rodriguez con anillo — Madre & Hija",
+                    href: "#story-madre-hija",
+                  },
+                  {
+                    title: "Amor y Compromiso",
+                    text: "Diseños únicos que reflejan la eternidad del amor. Encuentra la joya perfecta para tu otra mitad.",
+                    src: "/stories/amor-compromiso.jpg",
+                    alt: "Collar en el cuello — Amor y Compromiso",
+                    href: "#story-amor-compromiso",
+                  },
+                ].map((card, i) => (
+                  <article
+                    key={i}
+                    className="bg-white border border-slate-200 shadow-sm"
+                  >
+                    {/* Картинка фикс 360×450 */}
+                    <div className="relative w-[360px] h-[450px] mx-auto mt-5">
+                      <Image
+                        src={card.src}
+                        alt={card.alt}
+                        width={360}
+                        height={450}
+                        priority={i === 0}
+                        className="block w-[360px] h-[450px] object-cover"
+                      />
+                    </div>
+
+                    <div className="p-6 w-[360px] mx-auto">
+                      <h3
+                        className={`${metropolis.className} text-[19px] text-slate-900`}
+                      >
+                        {card.title}
+                      </h3>
+                      <p className="mt-2 text-[14px] leading-relaxed text-slate-600">
+                        {card.text}
+                      </p>
+                      <a
+                        href={card.href}
+                        className={`${metropolis.className} mt-4 inline-flex items-center gap-2 text-[13px] font-medium text-[#517EC1] hover:underline`}
+                      >
+                        DESCUBRE MÁS <span aria-hidden>→</span>
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              <div className="py-12" />
+            </div>
+          </div>
+        </section>
+        
         {/* Los más vendidos */}
         <section id="best-sellers" className="py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
