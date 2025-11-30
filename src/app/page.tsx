@@ -71,10 +71,10 @@ export default function HomePage() {
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
         {/* полоса на 100vw */}
         <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-          {/* внутренняя линия с небольшими паддингами у краёв окна */}
-          <div className="relative h-16 px-3 sm:px-4 lg:px-6">
-            {/* ЛЕВО: меню тянется к левому краю */}
-            <nav className="h-full flex items-center gap-5 text-sm">
+          {/* строка хедера, фиксируем высоту */}
+          <div className="relative h-16">
+            {/* LEFT — прижат к левому краю окна */}
+            <nav className="absolute inset-y-0 left-3 sm:left-4 lg:left-6 flex items-center gap-5 text-sm">
               <a href="#home" className="hover:text-black">
                 INICIO
               </a>
@@ -89,17 +89,17 @@ export default function HomePage() {
               </a>
             </nav>
 
-            {/* ЦЕНТР: логотип + подпись — ЖЁСТКО по центру экрана */}
+            {/* CENTER — логотип строго по центру */}
             <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center">
               <a
                 href="#home"
-                className="block"
                 aria-label="Joyas Rodriguez – logo"
+                className="block"
               >
                 <Image
                   src="/icons/logo.png"
                   alt="Joyas Rodriguez"
-                  width={300} // реальные размеры файла, пусть остаются
+                  width={300}
                   height={64}
                   priority
                   className="w-[120px] sm:w-[140px] md:w-[170px] lg:w-[200px] h-auto object-contain"
@@ -108,17 +108,41 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* ПРАВО: утилиты тянутся к правому краю */}
-            <div className="absolute inset-y-0 right-3 sm:right-4 lg:right-6 flex items-center gap-2">
-              <button className="h-9 px-3 border border-slate-300 text-sm">
-                Buscar
-              </button>
-              <button className="h-9 px-3 border border-slate-300 text-sm">
-                Cuenta
-              </button>
-              <button className="h-9 px-3 border border-slate-300 text-sm">
-                Carrito
-              </button>
+            {/* RIGHT — прижат к правому краю окна */}
+            <div className="absolute inset-y-0 right-3 sm:right-4 lg:right-6 flex items-center gap-6">
+              <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-wide">
+                <a href="#contacto" className="hover:text-slate-700">
+                  CONTACTO
+                </a>
+                <a href="#pedido" className="hover:text-slate-700">
+                  SIGUE TU PEDIDO
+                </a>
+              </nav>
+              <div className="flex items-center gap-3 sm:gap-4">
+                <button
+                  aria-label="Cuenta"
+                  className="inline-flex h-8 w-8 items-center justify-center hover:opacity-80"
+                >
+                  <Image src="/icons/user.svg" alt="" width={20} height={20} />
+                </button>
+                <button
+                  aria-label="Buscar"
+                  className="inline-flex h-8 w-8 items-center justify-center hover:opacity-80"
+                >
+                  <Image
+                    src="/icons/search.svg"
+                    alt=""
+                    width={20}
+                    height={20}
+                  />
+                </button>
+                <button
+                  aria-label="Carrito"
+                  className="inline-flex h-8 w-8 items-center justify-center hover:opacity-80"
+                >
+                  <Image src="/icons/bag.svg" alt="" width={20} height={20} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
