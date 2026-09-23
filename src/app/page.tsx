@@ -70,7 +70,7 @@ export default function HomePage() {
       {/* Header / Navigation */}
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
         {/* полоса на 100vw */}
-        <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+        <div className="relative w-full">
           {/* строка хедера, фиксируем высоту */}
           <div className="relative h-16">
             {/* LEFT — прижат к левому краю окна */}
@@ -209,8 +209,7 @@ export default function HomePage() {
                   inline-flex h-11 items-center px-6 rounded-none
               border border-white text-white bg-transparent font-medium tracking-wide
               cursor-pointer transition-colors duration-200
-              hover:bg-white hover:text-brand
-                  translate-x-58`}
+              hover:bg-white hover:text-brand`}
                     >
                       SHOP COLLECTION
                     </a>
@@ -301,24 +300,24 @@ export default function HomePage() {
         </section>
 
         {/* Colecciones destacadas (3 cards) */}
-        <section className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <section className="w-full bg-white">
+          <div className="w-full px-[5vw]">
             {/* Заголовки */}
-            <header className="pt-10 sm:pt-14 text-center">
+            <header className="pt-[120px] text-center">
               <h2
-                className={`${metropolis.className} text-[26px] sm:text-[34px] md:text-[40px] leading-tight tracking-wide text-slate-900 uppercase`}
+                className={`${metropolis.className} text-[26px] leading-tight tracking-wide text-slate-900 uppercase sm:text-[34px] md:text-[40px]`}
               >
                 ELIGE LA JOYA PERFECTA PARA TI O PARA
                 <br className="hidden md:block" />
                 TUS SERES QUERIDOS.
               </h2>
-              <p className="mt-3 text-slate-500 text-[14px]">
+              <p className="mt-3 text-[14px] text-slate-500">
                 Hecha un vistazo a nuestras colecciones destacadas
               </p>
             </header>
 
             {/* Карточки */}
-            <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="mt-8 grid grid-cols-1 gap-[4vw] sm:mt-10 sm:grid-cols-2 sm:gap-[2vw] lg:grid-cols-3">
               {[
                 {
                   tag: "LOS MÁS VENDIDOS",
@@ -345,15 +344,15 @@ export default function HomePage() {
                   className="group relative overflow-hidden bg-[#F7F7F7] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)]"
                 >
                   {/* Обёртка: картинка + бейдж */}
-                  <div className="relative aspect-[4/5]">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
                     {/* Картинка (слой ниже) */}
                     <Image
                       src={c.src}
                       alt={c.alt}
                       fill
                       priority={i === 0}
-                      sizes="(max-width:768px) 100vw, (max-width:1280px) 33vw, 33vw"
-                      className="object-cover z-0 transition-transform duration-500 group-hover:scale-[1.03]"
+                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 44vw, 29vw"
+                      className="z-0 object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                     {/* Бейдж — острые углы, поверх */}
                     <span
@@ -370,13 +369,7 @@ export default function HomePage() {
             <div className="flex justify-center py-10 sm:py-12">
               <a
                 href="#collections"
-                className={`${metropolis.className} inline-flex items-center justify-center
-      h-10 px-7 text-[13px] uppercase font-medium tracking-wide
-      border border-slate-900 text-slate-900 rounded-none
-      transition-colors duration-200
-      hover:border-[#517EC1] hover:text-[#517EC1]
-      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#517EC1]/60
-      active:translate-y-[1px]`}
+                className={`${metropolis.className} inline-flex h-10 items-center justify-center rounded-none border border-slate-900 px-7 text-[13px] font-medium tracking-wide text-slate-900 uppercase transition-colors duration-200 hover:border-[#517EC1] hover:text-[#517EC1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#517EC1]/60 active:translate-y-[1px]`}
               >
                 VER LAS COLECCIONES
               </a>
@@ -385,92 +378,84 @@ export default function HomePage() {
         </section>
 
         {/* HISTORIAS */}
-        <section className="relative w-screen left-1/2 -translate-x-1/2 bg-white">
-          <div className="mx-auto overflow-x-auto">
-            <div className="mx-auto" style={{ width: 1200 }}>
-              <header className="pt-12 text-center">
-                <h2
-                  className={`${metropolis.className} text-[40px] leading-tight tracking-wide text-slate-900 uppercase`}
-                >
-                  HISTORIAS
-                </h2>
-                <p
-                  className={`${metropolis.className} mt-3 text-[14px] text-slate-500`}
-                >
-                  Cada una de nuestras piezas cuenta con su propia historia, un
-                  reflejo de momentos especiales que llevarás contigo para
-                  siempre.
-                </p>
-              </header>
+        <section id="historias" className="w-full bg-[#FAFAFA] py-12 sm:py-16">
+          <header className="px-[5vw] text-center">
+            <h2
+              className={`${metropolis.className} text-[30px] leading-tight tracking-wide text-slate-900 uppercase sm:text-[36px] lg:text-[40px]`}
+            >
+              HISTORIAS
+            </h2>
+            <p
+              className={`${metropolis.className} mx-auto mt-3 max-w-2xl text-[14px] text-slate-500`}
+            >
+              Cada una de nuestras piezas cuenta con su propia historia, un
+              reflejo de momentos especiales que llevarás contigo para siempre.
+            </p>
+          </header>
 
-              <div className="mt-10 grid grid-cols-3 gap-24">
-                {[
-                  {
-                    title: "Amor Propio",
-                    text: "Piezas que te harán brillar, exaltando el amor hacia ti misma. Celebra tu autenticidad y empodérate con un toque de elegancia.",
-                    src: "/stories/amor-propio.jpg",
-                    alt: "Anillo en mano — Amor Propio",
-                    href: "#story-amor-propio",
-                  },
-                  {
-                    title: "Madre & Hija",
-                    text: "Un reflejo brillante del amor eterno que compartís como madre & hija, capturado en diseños elegantes y atemporales.",
-                    src: "/stories/madre-hija.jpg",
-                    alt: "Caja Joyas Rodriguez con anillo — Madre & Hija",
-                    href: "#story-madre-hija",
-                  },
-                  {
-                    title: "Amor y Compromiso",
-                    text: "Diseños únicos que reflejan la eternidad del amor. Encuentra la joya perfecta para tu otra mitad.",
-                    src: "/stories/amor-compromiso.jpg",
-                    alt: "Collar en el cuello — Amor y Compromiso",
-                    href: "#story-amor-compromiso",
-                  },
-                ].map((card, i) => (
-                  <article
-                    key={i}
-                    className="bg-white border border-slate-200 shadow-sm"
+          <div className="mt-10 grid grid-cols-1 gap-[4vw] px-[5vw] sm:grid-cols-2 sm:gap-[2vw] lg:grid-cols-3">
+            {[
+              {
+                title: "Amor Propio",
+                text: "Piezas que te harán brillar, exaltando el amor hacia ti misma. Celebra tu autenticidad y empodérate con un toque de elegancia.",
+                src: "/stories/amor-propio.jpg",
+                alt: "Anillo en mano — Amor Propio",
+                href: "#story-amor-propio",
+              },
+              {
+                title: "Madre & Hija",
+                text: "Un reflejo brillante del amor eterno que compartís como madre & hija, capturado en diseños elegantes y atemporales.",
+                src: "/stories/madre-hija.jpg",
+                alt: "Caja Joyas Rodriguez con anillo — Madre & Hija",
+                href: "#story-madre-hija",
+              },
+              {
+                title: "Amor y Compromiso",
+                text: "Diseños únicos que reflejan la eternidad del amor. Encuentra la joya perfecta para tu otra mitad.",
+                src: "/stories/amor-compromiso.jpg",
+                alt: "Collar en el cuello — Amor y Compromiso",
+                href: "#story-amor-compromiso",
+              },
+            ].map((card, i) => (
+              <article
+                key={card.title}
+                className="min-w-0 bg-white p-[3vw] shadow-sm sm:p-[1vw]"
+              >
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <Image
+                    src={card.src}
+                    alt={card.alt}
+                    fill
+                    priority={i === 0}
+                    sizes="(max-width: 640px) 84vw, (max-width: 1024px) 43vw, 28vw"
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="pb-3 pt-4">
+                  <h3
+                    className={`${metropolis.className} text-[19px] text-slate-900`}
                   >
-                    {/* Картинка фикс 360×450 */}
-                    <div className="relative w-[360px] h-[450px] mx-auto mt-5">
-                      <Image
-                        src={card.src}
-                        alt={card.alt}
-                        width={360}
-                        height={450}
-                        priority={i === 0}
-                        className="block w-[360px] h-[450px] object-cover"
-                      />
-                    </div>
-
-                    <div className="p-6 w-[360px] mx-auto">
-                      <h3
-                        className={`${metropolis.className} text-[19px] text-slate-900`}
-                      >
-                        {card.title}
-                      </h3>
-                      <p className="mt-2 text-[14px] leading-relaxed text-slate-600">
-                        {card.text}
-                      </p>
-                      <a
-                        href={card.href}
-                        className={`${metropolis.className} mt-4 inline-flex items-center gap-2 text-[13px] font-medium text-[#517EC1] hover:underline`}
-                      >
-                        DESCUBRE MÁS <span aria-hidden>→</span>
-                      </a>
-                    </div>
-                  </article>
-                ))}
-              </div>
-
-              <div className="py-12" />
-            </div>
+                    {card.title}
+                  </h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600">
+                    {card.text}
+                  </p>
+                  <a
+                    href={card.href}
+                    className={`${metropolis.className} mt-4 inline-flex items-center gap-2 text-[13px] font-medium text-[#517EC1] hover:underline`}
+                  >
+                    DESCUBRE MÁS <span aria-hidden>→</span>
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
-        
+
         {/* Los más vendidos */}
-        <section id="best-sellers" className="py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section id="best-sellers" className="pt-[72px] pb-12 sm:pt-[56px]">
+          <div className="w-full px-[5vw]">
             <div className="flex items-end justify-between">
               <h2 className="text-2xl sm:text-3xl font-bold">
                 LOS MÁS VENDIDOS
@@ -479,36 +464,51 @@ export default function HomePage() {
                 ver todo
               </a>
             </div>
-            <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="mt-6 grid grid-cols-1 gap-[4vw] sm:grid-cols-2 sm:gap-[2vw] lg:grid-cols-4">
               {[
                 {
                   name: "Anillo Girasol",
+                  src: "/carousel/Anillo Girasol.jpg",
                   priceOld: "$809,99 MXN",
                   priceNew: "$440,99 MXN",
+                  href: "#carousel-anillo-girasol",
                 },
                 {
                   name: "Anillo Lotus - Empieza de nuevo",
+                  src: "/carousel/Anillo Lotus - Empieza de nuevo.jpg",
                   priceOld: "$909,99 MXN",
                   priceNew: "$490,99 MXN",
+                  href: "#carousel-anillo-lotus",
                 },
                 {
                   name: "Anillo Aventura",
+                  src: "/carousel/Anillo Aventura.jpg",
                   priceOld: "$809,99 MXN",
                   priceNew: "$440,99 MXN",
+                  href: "#carousel-anillo-aventura",
                 },
                 {
                   name: "Anillo Elijo mi Paz",
+                  src: "/carousel/Anillo Elijo mi Paz.jpg",
                   priceOld: "$980,99 MXN",
                   priceNew: "$490,99 MXN",
+                  href: "#carousel-anillo-elijo-mi-paz",
                 },
               ].map((p, i) => (
                 <article
                   key={i}
-                  className="group rounded-2xl border border-slate-200 overflow-hidden"
+                  className="group min-w-0 overflow-hidden rounded-2xl border border-slate-200"
                 >
                   {/* Product image slot */}
-                  <div className="aspect-[4/5] bg-slate-100 grid place-items-center text-slate-400">
-                    IMG
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <Image
+                      src={p.src}
+                      alt={p.name}
+                      fill
+                      priority={i === 0}
+                      sizes="(max-width: 640px) 84vw, (max-width: 1024px) 43vw, 28vw"
+                      className="object-cover"
+                    />
                   </div>
                   <div className="p-4">
                     <div className="flex items-center justify-between text-xs">
@@ -524,11 +524,11 @@ export default function HomePage() {
                       </span>
                       <span className="font-semibold">{p.priceNew}</span>
                     </div>
-                    <div className="mt-4 flex gap-2">
-                      <button className="h-10 px-4 rounded border border-slate-300 text-sm">
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      <button className="h-10 min-w-0 rounded border border-slate-300 px-1 text-sm">
                         Añadir
                       </button>
-                      <button className="h-10 px-4 rounded bg-black text-white text-sm">
+                      <button className="h-10 min-w-0 rounded bg-black px-1 text-sm text-white">
                         Comprar
                       </button>
                     </div>
@@ -565,53 +565,27 @@ export default function HomePage() {
         {/* Instagram / UGC */}
         <section
           id="instagram"
-          className="py-12 bg-slate-50 border-y border-slate-200"
+          className="border-y border-slate-200 bg-slate-50 py-12"
         >
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-xl sm:text-2xl font-semibold">
+          <div className="w-full px-[5vw] text-center">
+            <h2 className="text-xl font-semibold sm:text-2xl">
               ÚNETE A LOS MÁS DE 30.000 DE NUESTRA CUENTA INSTAGRAM
             </h2>
-            <p className="mt-2 text-slate-600 max-w-3xl mx-auto">
+            <p className="mx-auto mt-2 max-w-3xl text-slate-600">
               Comparte los momentos en los cuales recibes o regalas una de
               nuestras Joyas. Recibirás así las novedades y los mejores
               descuentos por adelantado.
             </p>
             <p className="mt-2 text-slate-600">@joyas_rodriguez_</p>
-            {/* Gallery slot */}
-            <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+
+            <div className="mt-6 grid grid-cols-2 gap-[2vw] sm:grid-cols-4">
               {Array.from({ length: 8 }).map((_, i) => (
                 <div
                   key={i}
-                  className="aspect-square rounded-lg bg-slate-100 border border-slate-200"
+                  className="aspect-square w-full min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-100"
                 />
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Newsletter */}
-        <section id="newsletter" className="py-12">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-            <h3 className="text-xl sm:text-2xl font-semibold">
-              INSCRÍBETE A NUESTRA NEWSLETTER
-            </h3>
-            <p className="mt-2 text-slate-600">
-              Suscríbete para recibir ofertas especiales, sorteos gratuitos y
-              ofertas únicas.
-            </p>
-            <form className="mt-6 grid sm:grid-cols-[1fr_auto] gap-3">
-              <input
-                type="email"
-                placeholder="E-mail"
-                className="h-11 rounded border border-slate-300 px-4"
-              />
-              <button
-                type="submit"
-                className="h-11 px-6 rounded bg-black text-white text-sm"
-              >
-                SUBSCRIBIR
-              </button>
-            </form>
           </div>
         </section>
 
