@@ -1,4 +1,90 @@
+"use client";
 
+import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+const products = [
+  {
+    name: "Anillo Girasol",
+    src: "/carousel/Anillo Girasol.jpg",
+    priceOld: "$809,99 MXN",
+    priceNew: "$440,99 MXN",
+  },
+  {
+    name: "Anillo Lotus - Empieza de nuevo",
+    src:"/carousel/Anillo Lotus - Empieza de nuevo.jpg",
+    priceOld: "$909,99 MXN",
+    priceNew: "$490,99 MXN",
+  },
+  {
+    name: "Anillo Aventura",
+    src: "/carousel/Anillo Aventura.jpg",
+    priceOld: "$809,99 MXN",
+    priceNew: "$440,99 MXN",
+  },
+  {
+    name: "Anillo Elijo mi Paz",
+    src: "/carousel/Anillo Elijo mi Paz.jpg",
+    priceOld: "$980,99 MXN",
+    priceNew: "$490,99 MXN",
+  },
+  {
+    name: "A mi Hija - Anillo Universo",
+    src: "/carousel/A mi Hija - Anillo Universo.jpg",
+    priceOld: "$980,99 MXN",
+    priceNew: "$490,99 MXN",
+  },
+];
+
+export default function BestSellersCarousel({
+  fontClassName,
+}: {
+  fontClassName: string;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canGoBack, setCanGoBack] = useState(false);
+  const [canGoForward, setCanGoForward] = useState(true);
+
+  const updateArrows = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    setCanGoBack(track.scrollLeft > 1);
+    setCanGoForward(track.scrollLeft < track.scrollWidth - track.clientWidth - 1);
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const observer = new ResizeObserver(updateArrows);
+    observer.observe(track);
+    updateArrows();
+
+    return () => observer.disconnect();
+  }, [updateArrows]);
+
+  const scrollProducts = (direction: -1 | 1) => {
+    const track = trackRef.current;
+    const card = track?.querySelector<HTMLElement>("[data-product-card]");
+    if (!track || !card) return;
+
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    track.scrollBy({
+      left: direction * (card.getBoundingClientRect().width + gap),
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <section id="best-sellers" className="w-full bg-white py-12 sm:py-16">
+      <div className="mb-6 flex items-start justify-between px-[4vw] sm:px-[2vw] lg:px-[1.5vw]">
+        <div>
+          <h2
+            className={`${fontClassName} text-[25px] leading-tight text-slate-900 uppercase sm:text-[30px]`}
+          >
+            LOS MÁS VENDIDOS
+          </h2>
           <a
             href="#categorias"
             className={`${fontClassName} mt-2 inline-flex items-center gap-2 text-[12px] font-medium tracking-wide text-[#517EC1] hover:underline`}
@@ -50,11 +136,11 @@
           >
             <div className="relative grid aspect-[4/5] w-full place-items-center overflow-hidden bg-[#FBFAFB]">
               <Image
-                src={product.image}
+                src={product.src}
                 alt={product.name}
                 fill
                 sizes="(max-width: 640px) 78vw, (max-width: 1024px) 43vw, 29vw"
-                className="object-contain"
+                className="object-cover object-center"
               />
               <span
                 className={`${fontClassName} absolute top-[3vw] left-[3vw] bg-[#EC856A] px-2 py-1 text-[10px] text-white uppercase sm:top-[1.5vw] sm:left-[1.5vw] lg:top-[1vw] lg:left-[1vw]`}
