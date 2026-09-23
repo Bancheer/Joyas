@@ -77,7 +77,7 @@ export default function BestSellersCarousel({
   };
 
   return (
-    <section id="best-sellers" className="w-full bg-white py-12 sm:py-16">
+    <section id="best-sellers" className="w-full bg-white mt-[140px] pt-[96px] pb-12 sm:pb-16">
       <div className="mb-6 flex items-start justify-between px-[4vw] sm:px-[2vw] lg:px-[1.5vw]">
         <div>
           <h2
