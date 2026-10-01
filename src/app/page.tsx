@@ -3,14 +3,20 @@ import Image from "next/image";
 import { Parisienne } from "next/font/google";
 import localFont from "next/font/local";
 import BestSellersCarousel from "./BestSellersCarousel";
+import { Nunito } from "next/font/google";
 
 const parisienne = Parisienne({ weight: "400", subsets: ["latin"] });
 const metropolis = localFont({
   src: [
     { path: "./fonts/Metropolis-Regular.otf", weight: "400", style: "normal" },
     { path: "./fonts/Metropolis-Medium.otf", weight: "500", style: "normal" },
-    // { path: "./fonts/Metropolis-SemiBold.otf", weight: "600", style: "normal" },
+    { path: "./fonts/Metropolis-SemiBold.otf", weight: "600", style: "normal" },
   ],
+  display: "swap",
+});
+const nunito = Nunito({
+  weight: "600",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -467,8 +473,75 @@ export default function HomePage() {
         {/* Los más vendidos */}
         <BestSellersCarousel fontClassName={metropolis.className} />
 
+        {/* Lo que dicen de nosotros */}
+        <section
+          id="testimonios"
+          className="w-full bg-[#FAFAFA] px-[5vw] py-14 sm:py-20 lg:pt-[48px] lg:pb-[32px]"
+        >
+          <div className="mx-auto max-w-[1000px] text-center">
+            <h2
+              className={`${nunito.className} mx-auto max-w-[300px] text-[26px] font-semibold leading-[1.35] text-[#131314] uppercase sm:max-w-none sm:text-[30px] lg:text-[34px]`}
+            >
+              LO QUE DICEN DE NOSOTROS
+            </h2>
+
+            <blockquote className="relative mx-auto mt-9 max-w-[950px] px-7 pt-10 pb-8 sm:mt-12 sm:px-16 lg:mt-[63px] lg:px-[60px] lg:pt-[46px] lg:pb-[40px]">
+              <Image
+                src="/icons/quote-open.svg"
+                alt=""
+                width={46}
+                height={33}
+                className="absolute top-0 left-0 lg:top-[10px] lg:left-[75px]"
+              />
+
+              <p
+                className={`${metropolis.className} text-[14px] leading-[1.7] text-[#2A2B2D] sm:text-[18px] lg:mx-auto lg:max-w-[699px] lg:text-center lg:text-[18px] lg:leading-[1.4] lg:tracking-[0.18px] min-[1440px]:whitespace-nowrap`}
+              >
+                Siempre compro productos en Joyas Rodriguez. La calidad es muy
+                buena y la
+                <br className="hidden min-[1440px]:inline" /> atención al
+                cliente perfecta. Además el hecho de que cada producto llegue
+                con
+                <br className="hidden min-[1440px]:inline" /> su propia tarjeta
+                hace que los regalos sean todavía más únicos. Lo recomiendo
+              </p>
+
+              <Image
+                src="/icons/quote-close.svg"
+                alt=""
+                width={46}
+                height={33}
+                className="absolute right-0 bottom-0 lg:right-[80px] lg:bottom-[0px]"
+              />
+            </blockquote>
+
+            <p
+              className={`${metropolis.className} mt-9 text-[12px] leading-snug text-[#131314] uppercase sm:mt-10 sm:text-[14px] lg:mt-[117px] lg:text-[18px] lg:leading-[1.4] lg:tracking-[0.18px]`}
+            >
+              MÁS DE <span className="font-semibold">200.000</span> CLIENTES
+              SATISFECHOS
+            </p>
+
+            <div
+              className="mt-[10px] flex justify-center gap-0.5"
+              role="img"
+              aria-label="Valoración: cinco de пяти звёзд"
+            >
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Image
+                  key={index}
+                  src="/icons/star.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Categorías */}
-        <section id="categorias" className="py-12">
+        <section id="categorias" className="pt-12 pb-12 lg:pt-[160px]">
           <div className="w-full px-[5vw] text-center">
             <h2 className="text-2xl font-bold">
               Descubre y compra por categorías
@@ -629,36 +702,6 @@ export default function HomePage() {
             <div className="py-3">30 días de garantía</div>
             <div className="py-3">Envío gratuito en todos los pedidos</div>
             <div className="py-3">Más de 200.000 clientes satisfechos</div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <section id="testimonios" className="py-12">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold">
-              Lo que dicen de nosotros
-            </h2>
-            <p className="mt-1 text-slate-600">
-              más de 200.000 clientes satisfechos
-            </p>
-            <div className="mt-6 grid md:grid-cols-2 gap-6">
-              {Array.from({ length: 2 }).map((_, i) => (
-                <blockquote
-                  key={i}
-                  className="rounded-2xl border border-slate-200 p-5"
-                >
-                  <p className="text-slate-700">
-                    Siempre compro productos en Joyas Rodriguez. La calidad es
-                    muy buena y la atención al cliente perfecta. Además el hecho
-                    de que cada producto llegue con su propia tarjeta hace que
-                    los regalos sean todavía más únicos. Lo recomiendo
-                  </p>
-                  <footer className="mt-3 text-sm text-slate-500">
-                    — Cliente verificado
-                  </footer>
-                </blockquote>
-              ))}
-            </div>
           </div>
         </section>
       </main>
