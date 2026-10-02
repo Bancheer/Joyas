@@ -319,7 +319,7 @@ export default function HomePage() {
                 <br className="hidden md:block" />
                 TUS SERES QUERIDOS.
               </h2>
-              <p className="mt-3 text-slate-500 text-[14px]">
+              <p className="mt-3 text-[#2A2B2D] text-[14px]">
                 Hecha un vistazo a nuestras colecciones destacadas
               </p>
             </header>
@@ -403,7 +403,7 @@ export default function HomePage() {
               HISTORIAS
             </h2>
             <p
-              className={`${metropolis.className} mx-auto mt-3 max-w-2xl text-[14px] text-slate-500`}
+              className={`${metropolis.className} mx-auto mt-3 max-w-2xl text-[14px] text-[#2A2B2D]`}
             >
               Cada una de nuestras piezas cuenta con su propia historia, un
               reflejo de momentos especiales que llevarás contigo para siempre.
@@ -541,24 +541,179 @@ export default function HomePage() {
         </section>
 
         {/* Categorías */}
-        <section id="categorias" className="pt-12 pb-12 lg:pt-[160px]">
-          <div className="w-full px-[5vw] text-center">
-            <h2 className="text-2xl font-bold">
-              Descubre y compra por categorías
+        <section
+          id="categorias"
+          className="px-4 pt-12 pb-20 lg:px-8 lg:pt-[140px] lg:pb-[140px]"
+        >
+          <div className="w-full text-center">
+            <h2
+              className={`${nunito.className} mx-auto max-w-[886px] text-[24px] font-semibold leading-[1.35] text-[#131314] uppercase sm:text-[28px] lg:text-[34px]`}
+            >
+              DESCUBRE Y COMPRA POR CATEGORÍAS
             </h2>
-            <p className="mt-1 text-slate-600">
+            <p
+              className={`${metropolis.className} text-[14px] leading-[1.2] tracking-[0.14px] text-[#2A2B2D]`}
+            >
               Hermoso diseño y artesanía sin igual.
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-[2vw] sm:grid-cols-4">
-              {["ANILLOS", "PULSERAS", "PENDIENTES", "COLLARES"].map((cat) => (
-                <a
-                  key={cat}
-                  href="#"
-                  className="block min-w-0 text-sm font-medium"
+            <div className="mt-10 grid grid-cols-2 gap-x-1 gap-y-6 lg:mt-[50px] lg:grid-cols-4">
+              {[
+                {
+                  name: "ANILLOS",
+                  image: "/categories/anillos.jpg",
+                  alt: "Anillo de plata en una mano",
+                },
+                {
+                  name: "PULSEARS",
+                  image: "/categories/pulsears.jpg",
+                  alt: "Pulsera dorada en una muñeca",
+                },
+                {
+                  name: "PENSIENTES",
+                  image: "/categories/pensientes.jpg",
+                  alt: "Pendientes dorados en una oreja",
+                },
+                {
+                  name: "COLLARES",
+                  image: "/categories/collares.jpg",
+                  alt: "Collar con colgante azul",
+                },
+              ].map((category) => (
+                <article key={category.name} className="min-w-0">
+                  <div className="relative aspect-[239/230] w-full overflow-hidden bg-[#FAFAFA]">
+                    <Image
+                      src={category.image}
+                      alt={category.alt}
+                      fill
+                      sizes="(max-width: 1023px) calc((100vw - 36px) / 2), calc((100vw - 76px) / 4)"
+                      className="object-cover object-center"
+                    />
+                  </div>
+                  <h3
+                    className={`${metropolis.className} mt-1 text-center text-[16px] font-normal leading-normal tracking-[0.2px] text-[#131314] lg:text-[20px]`}
+                  >
+                    {category.name}
+                  </h3>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Sobre nosotros */}
+        <section id="sobre-nosotros" className="grid w-full lg:grid-cols-2">
+          <div className="relative aspect-[720/717] w-full overflow-hidden">
+            <Image
+              src="/about.jpg"
+              alt="Tarjeta Amor Propio y anillo en una caja de regalo"
+              fill
+              sizes="(max-width: 1023px) 100vw, 50vw"
+              className="object-cover object-left"
+            />
+          </div>
+
+          <div className="flex min-h-[500px] flex-col items-center justify-center bg-[#F4F5FA] px-5 py-16 text-center sm:px-10 lg:aspect-[720/717] lg:min-h-0 lg:px-12 lg:py-8">
+            <p
+              className={`${metropolis.className} text-[12px] leading-[1.4] tracking-[0.02em] text-[#131314] uppercase`}
+            >
+              SOBRE NOSOTROS
+            </p>
+
+            <h2
+              className={`${parisienne.className} mt-9 text-[42px] leading-[1.1] text-[#131314] sm:text-[48px] lg:mt-10 lg:text-[56px]`}
+            >
+              Felicidad y Paz
+            </h2>
+
+            <div
+              className={`${metropolis.className} mt-5 max-w-[520px] space-y-2 text-[12px] leading-[1.45] text-[#2A2B2D] lg:text-[13px]`}
+            >
+              <p>
+                La mayoría de nuestras piezas de joyería están hechas de plata
+                de ley925. No sólo están hechas para brillar y relucir, sino
+                también para durar.
+              </p>
+              <p>
+                Cada Joya llega con su propia cajita y con su tarjeta con un
+                mensaje significativo.
+              </p>
+              <p>
+                Joyas Rodríguez encarna el espíritu de aventura y el valor para
+                perseguir tus sueños.
+              </p>
+            </div>
+
+            <div
+              className="mt-6 flex items-center gap-3"
+              aria-label="Redes sociales"
+            >
+              <Image
+                src="/icons/facebook.svg"
+                alt="Facebook"
+                width={24}
+                height={24}
+              />
+              <Image
+                src="/icons/instagram.svg"
+                alt="Instagram"
+                width={24}
+                height={24}
+              />
+            </div>
+
+            <a
+              href="/sobre-nosotros"
+              className={`${metropolis.className} mt-16 inline-flex min-h-[52px] w-full max-w-[310px] items-center justify-center border-[1.5px] border-[#2A2B2D] px-[30px] py-3 text-center text-[14px] font-medium tracking-[0.14px] text-[#131314] uppercase transition-colors hover:bg-[#2A2B2D] hover:text-white lg:mt-[70px]`}
+            >
+              MÁS ACERCA DE NOSOTROS
+            </a>
+          </div>
+        </section>
+
+        {/* Experience blocks */}
+        <section
+          id="experiencia"
+          className="py-12 bg-slate-50 border-y border-slate-200"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="sr-only">La experiencia Joyas Rodriguez</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  title: "Envíos gratuitos",
+                  text: "Ofrecemos envíos gratuitos en todos los pedidos con un tiempo de entrega de 6-12 días laborables.",
+                  cta: "Para saber más",
+                },
+                {
+                  title: "Joyas Rodriguez a tu servicio",
+                  text: "Nuestros expertos en atención al cliente están siempre a tu disposición para cualquier duda que tengas.",
+                  cta: "Contáctenos",
+                },
+                {
+                  title: "Historias únicas",
+                  text: "Nuestras joyas cuentan historias únicas y cada una llega con su propia tarjeta de mensaje, lista para regalar.",
+                  cta: "Descubre las colecciones",
+                },
+                {
+                  title: "La icónica Caja Azul",
+                  text: "Tu compra de Joyas Rodríguez siempre llega empaquetada en nuestra Caja Azul, elegante y refinada.",
+                  cta: "Descubre todos los regalos",
+                },
+              ].map((f, i) => (
+                <article
+                  key={i}
+                  className="rounded-2xl border border-slate-200 p-5 bg-white"
                 >
-                  <div className="relative aspect-square w-full overflow-hidden border border-slate-200 bg-slate-100" />
-                  <span className="mt-2 block">{cat}</span>
-                </a>
+                  {/* Icon/image slot */}
+                  <div className="h-12 w-12 rounded bg-slate-100 border border-slate-200" />
+                  <h3 className="mt-3 font-semibold">{f.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{f.text}</p>
+                  <div className="mt-4">
+                    <a href="#" className="text-sm underline">
+                      {f.cta}
+                    </a>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
@@ -614,82 +769,6 @@ export default function HomePage() {
                 SUBSCRIBIR
               </button>
             </form>
-          </div>
-        </section>
-
-        {/* Experience blocks */}
-        <section
-          id="experiencia"
-          className="py-12 bg-slate-50 border-y border-slate-200"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="sr-only">La experiencia Joyas Rodriguez</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  title: "Envíos gratuitos",
-                  text: "Ofrecemos envíos gratuitos en todos los pedidos con un tiempo de entrega de 6-12 días laborables.",
-                  cta: "Para saber más",
-                },
-                {
-                  title: "Joyas Rodriguez a tu servicio",
-                  text: "Nuestros expertos en atención al cliente están siempre a tu disposición para cualquier duda que tengas.",
-                  cta: "Contáctenos",
-                },
-                {
-                  title: "Historias únicas",
-                  text: "Nuestras joyas cuentan historias únicas y cada una llega con su propia tarjeta de mensaje, lista para regalar.",
-                  cta: "Descubre las colecciones",
-                },
-                {
-                  title: "La icónica Caja Azul",
-                  text: "Tu compra de Joyas Rodríguez siempre llega empaquetada en nuestra Caja Azul, elegante y refinada.",
-                  cta: "Descubre todos los regalos",
-                },
-              ].map((f, i) => (
-                <article
-                  key={i}
-                  className="rounded-2xl border border-slate-200 p-5 bg-white"
-                >
-                  {/* Icon/image slot */}
-                  <div className="h-12 w-12 rounded bg-slate-100 border border-slate-200" />
-                  <h3 className="mt-3 font-semibold">{f.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{f.text}</p>
-                  <div className="mt-4">
-                    <a href="#" className="text-sm underline">
-                      {f.cta}
-                    </a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* About us */}
-        <section id="sobre-nosotros" className="py-12">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-center">
-            {/* Image slot */}
-            <div className="aspect-[4/3] rounded-xl bg-slate-100 border border-slate-200" />
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold">Sobre nosotros</h2>
-              <p className="mt-4 text-slate-700">
-                Felicidad y Paz — La mayoría de nuestras piezas de joyería están
-                hechas de plata de ley 925. No sólo están hechas para brillar y
-                relucir, sino también para durar. Cada Joya llega con su propia
-                cajita y con su tarjeta con un mensaje significativo. Joyas
-                Rodríguez encarna el espíritu de aventura y el valor para
-                perseguir tus sueños.
-              </p>
-              <div className="mt-6">
-                <a
-                  href="#"
-                  className="inline-flex h-11 items-center px-6 rounded bg-black text-white text-sm"
-                >
-                  MÁS ACERCA DE NOSOTROS
-                </a>
-              </div>
-            </div>
           </div>
         </section>
 
