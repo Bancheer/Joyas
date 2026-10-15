@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import BestSellersCarousel from "./BestSellersCarousel";
+import Experience from "@/components/home/Experience";
+import InstagramSection from "@/components/home/InstagramSection";
+import Newsletter from "@/components/home/Newsletter";
 import { metropolis, nunito, parisienne } from "./fonts";
 
 // Home page layout matching the provided mockup (structure + placeholders only)
@@ -526,119 +529,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Experience blocks */}
-        <section
-          id="experiencia"
-          className="py-12 bg-slate-50 border-y border-slate-200"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="sr-only">La experiencia Joyas Rodriguez</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  title: "Envíos gratuitos",
-                  text: "Ofrecemos envíos gratuitos en todos los pedidos con un tiempo de entrega de 6-12 días laborables.",
-                  cta: "Para saber más",
-                },
-                {
-                  title: "Joyas Rodriguez a tu servicio",
-                  text: "Nuestros expertos en atención al cliente están siempre a tu disposición para cualquier duda que tengas.",
-                  cta: "Contáctenos",
-                },
-                {
-                  title: "Historias únicas",
-                  text: "Nuestras joyas cuentan historias únicas y cada una llega con su propia tarjeta de mensaje, lista para regalar.",
-                  cta: "Descubre las colecciones",
-                },
-                {
-                  title: "La icónica Caja Azul",
-                  text: "Tu compra de Joyas Rodríguez siempre llega empaquetada en nuestra Caja Azul, elegante y refinada.",
-                  cta: "Descubre todos los regalos",
-                },
-              ].map((f, i) => (
-                <article
-                  key={i}
-                  className="rounded-2xl border border-slate-200 p-5 bg-white"
-                >
-                  {/* Icon/image slot */}
-                  <div className="h-12 w-12 rounded bg-slate-100 border border-slate-200" />
-                  <h3 className="mt-3 font-semibold">{f.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{f.text}</p>
-                  <div className="mt-4">
-                    <a href="#" className="text-sm underline">
-                      {f.cta}
-                    </a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Instagram / UGC */}
-        <section
-          id="instagram"
-          className="py-12 bg-slate-50 border-y border-slate-200"
-        >
-          <div className="w-full px-[5vw] text-center">
-            <h2 className="text-xl sm:text-2xl font-semibold">
-              ÚNETE A LOS MÁS DE 30.000 DE NUESTRA CUENTA INSTAGRAM
-            </h2>
-            <p className="mt-2 text-slate-600 max-w-3xl mx-auto">
-              Comparte los momentos en los cuales recibes o regalas una de
-              nuestras Joyas. Recibirás así las novedades y los mejores
-              descuentos por adelantado.
-            </p>
-            <p className="mt-2 text-slate-600">@joyas_rodriguez_</p>
-            {/* Gallery slot */}
-            <div className="mt-6 grid grid-cols-2 gap-[2vw] sm:grid-cols-4">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="aspect-square w-full min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-100"
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Newsletter */}
-        <section id="newsletter" className="py-12">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-            <h3 className="text-xl sm:text-2xl font-semibold">
-              INSCRÍBETE A NUESTRA NEWSLETTER
-            </h3>
-            <p className="mt-2 text-slate-600">
-              Suscríbete para recibir ofertas especiales, sorteos gratuitos y
-              ofertas únicas.
-            </p>
-            <form className="mt-6 grid sm:grid-cols-[1fr_auto] gap-3">
-              <input
-                type="email"
-                placeholder="E-mail"
-                className="h-11 rounded border border-slate-300 px-4"
-              />
-              <button
-                type="submit"
-                className="h-11 px-6 rounded bg-black text-white text-sm"
-              >
-                SUBSCRIBIR
-              </button>
-            </form>
-          </div>
-        </section>
-
-        {/* Perks row */}
-        <section className="py-8 border-y border-slate-200 bg-slate-50">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center text-sm font-medium">
-            <div className="py-3">
-              Caja regalo incluida en todos los pedidos
-            </div>
-            <div className="py-3">30 días de garantía</div>
-            <div className="py-3">Envío gratuito en todos los pedidos</div>
-            <div className="py-3">Más de 200.000 clientes satisfechos</div>
-          </div>
-        </section>
+        <Experience />
+        <InstagramSection />
+        <Newsletter />
       </main>
     </div>
   );

@@ -88,6 +88,17 @@ const assets = [
   ["icons/payments/bancontact.svg", figma("d4af81aa-759b-4289-ad92-e45d51fd4ab2", "70e24.svg")],
   ["icons/payments/gpay-g.svg", figma("d4af81aa-759b-4289-ad92-e45d51fd4ab2", "42554.svg")],
   ["icons/payments/gpay-pay.svg", figma("d4af81aa-759b-4289-ad92-e45d51fd4ab2", "49a3b.svg")],
+
+  // ── Главная: «La experiencia» и Instagram (15.10) ──
+  ["icons/experiencia-envio.svg", "https://www.figma.com/api/mcp/asset/587e5f08-5b96-4ecd-afa1-6c7c6abd2659.svg"],
+  ["icons/experiencia-servicio.svg", "https://www.figma.com/api/mcp/asset/f6377635-e77d-4563-8551-e5dd80e44222.svg"],
+  ["icons/experiencia-historias.svg", "https://www.figma.com/api/mcp/asset/c5d83fc8-e36e-46d3-bde7-ebc85cf8d3f4.svg"],
+  ["icons/experiencia-caja.svg", "https://www.figma.com/api/mcp/asset/adf109e3-85d4-4f2e-90a7-0b41dbb63dc7.svg"],
+  ["icons/arrow-right-blue.svg", figma("67fbc10d-21b2-45a6-b783-aa6a197dd931", "c4b4c.svg")],
+  ["instagram/foto-1.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "ec71f.png")],
+  ["instagram/foto-2.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "a523a.png")],
+  ["instagram/foto-3.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "44e5a.png")],
+  ["instagram/foto-4.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "6ee78.png")],
 ];
 
 const exists = (p) =>
