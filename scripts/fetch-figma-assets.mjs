@@ -64,6 +64,30 @@ const assets = [
       figma(id, `${name}.png`),
     ]),
   ),
+
+  // ── Страница товара (15.10) ──
+  // Галерея Anillo Aventura (8 фото)
+  ...["fb197", "883eb", "448fd", "74ab6", "b1635", "6b466", "5ad33", "82629"].map(
+    (name, i) => [
+      `productos/aventura/foto-${i + 1}.png`,
+      figma("392c5380-5340-48a8-861e-dc77da05430f", `${name}.png`),
+    ],
+  ),
+  ["icons/chevron-select.svg", figma("54270636-94b3-44b2-831e-ab64302b651f", "9bf4d.svg")],
+  ["icons/minus.svg", figma("54270636-94b3-44b2-831e-ab64302b651f", "933f4.svg")],
+  ["icons/plus.svg", figma("54270636-94b3-44b2-831e-ab64302b651f", "cac73.svg")],
+  ["icons/feature-gift.svg", figma("2f3d2776-a0b7-48fc-98db-c787275eb56b", "ba944.svg")],
+  ["icons/feature-silver.svg", figma("2f3d2776-a0b7-48fc-98db-c787275eb56b", "0d289.svg")],
+  ["icons/feature-truck.svg", figma("2f3d2776-a0b7-48fc-98db-c787275eb56b", "71805.svg")],
+  ["icons/feature-warranty.svg", figma("2f3d2776-a0b7-48fc-98db-c787275eb56b", "c3cf1.svg")],
+  ["icons/offer-diamond.svg", figma("adb44ce5-1b4b-4502-a37d-2efdc12866f2", "5151e.svg")],
+  ["icons/offer-arrow.svg", figma("adb44ce5-1b4b-4502-a37d-2efdc12866f2", "f0049.svg")],
+  ["icons/chevron-accordion.svg", figma("68f23861-c1a9-4648-8dec-e0920711578b", "9728e.svg")],
+  ["icons/chevron-accordion-blue.svg", figma("a27dd76a-260f-4851-a410-4ca9d673ca99", "4bb04.svg")],
+  // Иконки оплаты, которых нет в футере
+  ["icons/payments/bancontact.svg", figma("d4af81aa-759b-4289-ad92-e45d51fd4ab2", "70e24.svg")],
+  ["icons/payments/gpay-g.svg", figma("d4af81aa-759b-4289-ad92-e45d51fd4ab2", "42554.svg")],
+  ["icons/payments/gpay-pay.svg", figma("d4af81aa-759b-4289-ad92-e45d51fd4ab2", "49a3b.svg")],
 ];
 
 const exists = (p) =>
