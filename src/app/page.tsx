@@ -1,10 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Parisienne } from "next/font/google";
 import BestSellersCarousel from "./BestSellersCarousel";
-import { metropolis, nunito } from "./fonts";
-
-const parisienne = Parisienne({ weight: "400", subsets: ["latin"] });
+import { metropolis, nunito, parisienne } from "./fonts";
 
 // Home page layout matching the provided mockup (structure + placeholders only)
 // — Texts are taken from the mockup; images are left as empty slots you can fill (SVG/PNG)

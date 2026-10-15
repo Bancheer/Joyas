@@ -30,7 +30,7 @@ const products = [
   },
   {
     name: "A mi Hija - Anillo Universo",
-    src: "/carousel/A mi Hija - Anillo Universo.jpg",
+    src: "/carousel/Anillo Universo.jpg",
     priceOld: "$980,99 MXN",
     priceNew: "$490,99 MXN",
   },
