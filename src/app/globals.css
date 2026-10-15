@@ -12,6 +12,12 @@
   --font-mono: var(--font-geist-mono);
   --color-brand: #517EC1;
   --color-brand-bar: #B7BEE2;
+  /* Бегущая строка промо-полосы на телефоне */
+  --animate-marquee: marquee 14s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(-100%); }
+  }
 }
 
 @media (prefers-color-scheme: dark) {

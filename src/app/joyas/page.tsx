@@ -19,16 +19,26 @@ const featured = [
     href: "/joyas/mas-vendidos",
     image: "/joyas/mas-vendidos.png",
     alt: "Manos con anillos y pulsera de plata",
-    objectY: "88%", // в макете фото сдвинуто на -231px
+    // Кадрирование по макетам 360 / 768 / 1440 (фото сдвинуто вверх на 99 / 252 / 231px)
+    crop: "object-[50%_72%] md:object-[50%_82%] lg:object-[50%_88%]",
   },
   {
     label: "Novedades",
     href: "/joyas/novedades",
     image: "/joyas/novedades.png",
     alt: "Anillo en una caja de regalo azul",
-    objectY: "84%", // в макете фото сдвинуто на -221px
+    // Сдвиг 109 / 242 / 221px
+    crop: "object-[50%_79%] lg:object-[50%_84%]",
     minWidth: true,
   },
+];
+
+// Круглые «сторис» категорий — только на телефоне (макет 310:1039)
+const stories = [
+  { name: "Anillos", href: "/joyas/anillos", image: "/joyas/story-anillos.png" },
+  { name: "Pulseras", href: "/joyas/pulseras", image: "/joyas/story-pulseras.png" },
+  { name: "Pendientes", href: "/joyas/pendientes", image: "/joyas/story-pendientes.png" },
+  { name: "Collares", href: "/joyas/collares", image: "/joyas/story-collares.png" },
 ];
 
 // Категории (карточки 694×295 на сером фоне #F6F6F6).
@@ -108,23 +118,38 @@ const gifts = [
 export default function JoyasPage() {
   return (
     <main className={`${metropolis.className} bg-white text-[#131314]`}>
-      {/* Más vendidos / Novedades */}
-      <section className="px-[22px]">
-        <div className="mx-auto grid max-w-[1396px] gap-2 md:grid-cols-2">
+      {/* Сторис категорий — только на телефоне */}
+      <nav
+        aria-label="Categorías"
+        className="flex justify-between border-t border-[#F0F2FF] px-[21px] pb-[18px] pt-[15px] md:hidden"
+      >
+        {stories.map((st) => (
+          <Link key={st.href} href={st.href} className="flex w-[60px] flex-col items-center gap-2">
+            <span className="relative size-[60px]">
+              <Image src={st.image} alt="" width={54} height={54} className="absolute left-[3px] top-[3px] rounded-full" />
+              <Image src="/icons/story-ring.svg" alt="" width={64} height={64} className="absolute -inset-[2px] max-w-none" />
+            </span>
+            <span className="whitespace-nowrap text-[11px] uppercase">{st.name}</span>
+          </Link>
+        ))}
+      </nav>
+
+      {/* Más vendidos / Novedades: 1 колонка до 1024px, 2 — на компьютере */}
+      <section className="px-[14px] md:px-[15px] md:pt-6 lg:px-[22px] lg:pt-0">
+        <div className="mx-auto grid max-w-[1396px] gap-2 lg:grid-cols-2">
           {featured.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className="group relative block aspect-[694/431] overflow-hidden"
+              className="group relative block aspect-[332/194] overflow-hidden lg:aspect-[694/431]"
             >
               <Image
                 src={item.image}
                 alt={item.alt}
                 fill
                 priority
-                sizes="(max-width: 767px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                style={{ objectPosition: `50% ${item.objectY}` }}
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                className={`object-cover transition-transform duration-700 group-hover:scale-[1.03] ${item.crop}`}
               />
               {/* Затемнение из макета: чёрный 20% + синий rgba(39,48,96,.2) */}
               <span
@@ -146,9 +171,10 @@ export default function JoyasPage() {
       {/* Категории */}
       <section
         aria-label="Categorías"
-        className="px-[22px] pt-16 lg:pt-[100px]"
+        className="px-[14px] pt-20 md:px-[22px] md:pt-[100px]"
       >
-        <div className="mx-auto grid max-w-[1396px] gap-2 md:grid-cols-2">
+        {/* 1 колонка до 1024px (на планшете карточки 694px по центру), 2 — на компьютере */}
+        <div className="mx-auto grid max-w-[694px] gap-2 lg:max-w-[1396px] lg:grid-cols-2">
           {categories.map((cat) => (
             <Link
               key={cat.name}
@@ -163,7 +189,7 @@ export default function JoyasPage() {
                   src={cat.image}
                   alt={cat.alt}
                   fill
-                  sizes="(max-width: 767px) 80vw, 40vw"
+                  sizes="(max-width: 1023px) 60vw, 40vw"
                   className="object-cover"
                 />
               </span>
@@ -176,16 +202,16 @@ export default function JoyasPage() {
                     src={cat.bottomPatch}
                     alt=""
                     fill
-                    sizes="(max-width: 767px) 80vw, 40vw"
+                    sizes="(max-width: 1023px) 60vw, 40vw"
                     className="object-cover object-bottom"
                   />
                 </span>
               )}
-              <span className="absolute left-1/2 top-[69.15%] flex -translate-x-1/2 flex-col items-center gap-2">
-                <span className="text-[22px] leading-none whitespace-nowrap sm:text-[26px] lg:text-[32px]">
+              <span className="absolute left-1/2 top-[67.4%] flex -translate-x-1/2 flex-col items-center md:top-[69.15%] md:gap-2">
+                <span className="whitespace-nowrap text-[18px] leading-[22px] md:text-[32px] md:leading-none">
                   {cat.name}
                 </span>
-                <span className="border-b border-[#2A2B2D] text-[12px] leading-[15px] whitespace-nowrap text-[#2A2B2D]">
+                <span className="whitespace-nowrap border-b border-[#2A2B2D] text-[10px] leading-[12px] text-[#2A2B2D] md:text-[12px] md:leading-[15px]">
                   DISCOVER MORE
                 </span>
               </span>
@@ -197,16 +223,17 @@ export default function JoyasPage() {
       {/* Regalos para... */}
       <section
         aria-labelledby="regalos-para"
-        className="mt-16 bg-[#FAFAFA] px-[22px] pt-12 pb-14 lg:mt-[140px] lg:pt-[80px] lg:pb-[84px]"
+        className="mt-[100px] bg-[#FAFAFA] px-[14px] py-20 md:mt-[140px] md:px-[22px] lg:pb-[84px]"
       >
-        <div className="mx-auto max-w-[1396px]">
+        {/* 1 колонка на телефоне, 2 на планшете (695px по центру), 4 на компьютере */}
+        <div className="mx-auto max-w-[695px] lg:max-w-[1396px]">
           <h2
             id="regalos-para"
-            className={`${nunito.className} text-[26px] font-semibold uppercase leading-[1.35] sm:text-[30px] lg:text-[34px]`}
+            className={`${nunito.className} text-[28px] font-semibold uppercase leading-[1.35] md:text-[34px]`}
           >
             REGALOS PARA...
           </h2>
-          <div className="mt-[30px] grid grid-cols-2 gap-x-[5px] gap-y-6 lg:grid-cols-4">
+          <div className="mt-[30px] grid gap-x-[5px] gap-y-[26px] md:grid-cols-2 lg:grid-cols-4">
             {gifts.map((gift) => (
               <Link
                 key={gift.name}
@@ -218,7 +245,7 @@ export default function JoyasPage() {
                     src={gift.image}
                     alt={gift.alt}
                     fill
-                    sizes="(max-width: 1023px) 50vw, 25vw"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                   <span
@@ -227,7 +254,7 @@ export default function JoyasPage() {
                     {gift.label}
                   </span>
                 </span>
-                <span className="text-center text-[16px] uppercase sm:text-[18px] lg:text-[20px]">
+                <span className="text-center text-[20px] uppercase">
                   {gift.name}
                 </span>
               </Link>
@@ -236,8 +263,8 @@ export default function JoyasPage() {
         </div>
       </section>
 
-      {/* Отступ до футера — 140px, как в макете */}
-      <div className="h-16 lg:h-[140px]" />
+      {/* Отступ до футера: 100px на телефоне, 140px на планшете и компьютере */}
+      <div className="h-[100px] md:h-[140px]" />
     </main>
   );
 }

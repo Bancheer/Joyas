@@ -36,8 +36,9 @@ export default function SiteFooter() {
       id="contacto"
       className={`${metropolis.className} bg-[#EBEFFF] text-[#2A2B2D]`}
     >
-      <div className="mx-auto max-w-[1440px] px-4 pt-12 pb-8 sm:px-8 lg:px-[80px] lg:pt-[68px] lg:pb-[58px]">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[419fr_330fr_387fr_144fr] lg:gap-0">
+      <div className="mx-auto max-w-[1440px] px-[54px] pb-[60px] pt-[60px] md:px-[80px] md:pb-[68px] md:pt-[68px] lg:pb-[58px]">
+        {/* Порядок колонок: на телефоне и планшете Contactos идёт сразу после логотипа (макеты 360/768) */}
+        <div className="grid gap-y-10 md:grid-cols-[minmax(0,396fr)_minmax(0,212fr)] md:gap-y-[68px] lg:grid-cols-[419fr_330fr_387fr_144fr] lg:gap-0">
           {/* Логотип, подписка, соцсети */}
           <div>
             <Link href="/" aria-label="Joyas Rodriguez" className="block">
@@ -113,7 +114,7 @@ export default function SiteFooter() {
           </div>
 
           {/* AYUDA */}
-          <nav aria-labelledby="footer-ayuda">
+          <nav aria-labelledby="footer-ayuda" className="order-3 lg:order-2">
             <h3
               id="footer-ayuda"
               className="text-[14px] font-medium text-[#131314]"
@@ -132,7 +133,7 @@ export default function SiteFooter() {
           </nav>
 
           {/* CONTACTOS */}
-          <div id="contactos">
+          <div id="contactos" className="order-2 lg:order-3">
             <h3 className="text-[14px] font-medium text-[#131314]">
               CONTACTOS
             </h3>
@@ -151,7 +152,7 @@ export default function SiteFooter() {
           </div>
 
           {/* MENU FOOTER */}
-          <nav aria-labelledby="footer-menu">
+          <nav aria-labelledby="footer-menu" className="order-4">
             <h3
               id="footer-menu"
               className="whitespace-nowrap text-[14px] font-medium text-[#131314]"
@@ -171,7 +172,7 @@ export default function SiteFooter() {
         </div>
 
         {/* Способы оплаты */}
-        <ul className="mt-12 flex flex-wrap justify-center gap-[9px] lg:mt-[39px]">
+        <ul className="mx-auto mt-[60px] flex max-w-[211px] flex-wrap justify-center gap-x-[9px] gap-y-4 md:mt-[137px] md:max-w-none lg:mt-[39px]">
           {payments.map((p) =>
             p.boxed ? (
               <li

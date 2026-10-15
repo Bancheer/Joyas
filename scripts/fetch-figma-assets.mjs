@@ -99,6 +99,14 @@ const assets = [
   ["instagram/foto-2.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "a523a.png")],
   ["instagram/foto-3.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "44e5a.png")],
   ["instagram/foto-4.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "6ee78.png")],
+
+  // ── Мобильная версия (15.10) ──
+  ["icons/hamburger.svg", figma("f41d971d-58fb-4fb9-8866-7fe439794a0a", "da68b.svg")],
+  ["icons/story-ring.svg", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "c9885.svg")],
+  ["joyas/story-anillos.png", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "61d5e.png")],
+  ["joyas/story-pulseras.png", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "6199e.png")],
+  ["joyas/story-pendientes.png", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "6430a.png")],
+  ["joyas/story-collares.png", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "6c2b0.png")],
 ];
 
 const exists = (p) =>

@@ -1,133 +1,87 @@
 import Image from "next/image";
 import Link from "next/link";
 import { metropolis } from "@/app/fonts";
+import MobileMenu from "./MobileMenu";
+import { NAV_LINKS, SECONDARY_LINKS } from "./navLinks";
 
-// Промо-полоса + шапка сайта (общие для всех страниц)
+// Промо-полоса + шапка сайта (общие для всех страниц).
+// Макеты: 1440 — 310:277, 768 — 310:629 (бургер), 360 — 310:880 (бургер, без поиска)
 export default function SiteHeader() {
   return (
     <>
-      {/* Top promo bar */}
-      <div className="relative w-full bg-[#B7BEE2] text-slate-900 py-2 px-3">
-        {/* соц.иконки слева, центрированы по высоте */}
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-3 z-10">
-          <a
-            href="https://facebook.com/yourpage"
-            aria-label="Facebook"
-            className="p-0 hover:opacity-80 transition"
-          >
-            <Image
-              src="/icons/facebook.svg"
-              alt=""
-              width={20}
-              height={20}
-              priority
-            />
+      {/* Промо-полоса */}
+      <div
+        className={`${metropolis.className} relative flex h-[34px] items-center overflow-hidden bg-[#B7BEE2] text-[12px] text-[#131314]`}
+      >
+        {/* Соцсети — только на планшете и компьютере */}
+        <div className="absolute left-4 top-1/2 z-10 hidden -translate-y-1/2 items-center gap-[10px] md:flex lg:left-[22px]">
+          <a href="https://facebook.com/yourpage" aria-label="Facebook" className="hover:opacity-70">
+            <Image src="/icons/facebook.svg" alt="" width={18} height={18} priority />
           </a>
-          <a
-            href="https://instagram.com/yourpage"
-            aria-label="Instagram"
-            className="p-0 hover:opacity-80 transition"
-          >
-            <Image
-              src="/icons/instagram.svg"
-              alt=""
-              width={20}
-              height={20}
-              priority
-            />
+          <a href="https://instagram.com/yourpage" aria-label="Instagram" className="hover:opacity-70">
+            <Image src="/icons/instagram.svg" alt="" width={18} height={18} priority />
           </a>
         </div>
 
-        {/* текст строго по центру */}
-        <div className="text-center text-[13px] sm:text-[14px]">
-          <span
-            className={`${metropolis.className} font-medium tracking-[0.02em] uppercase`}
-          >
-            DESCUENTO EXTRA:
-          </span>
-          <span className={`${metropolis.className} font-normal`}>
-            {" "}
-            Aplicado al carrito sobre dos o más artículos
-          </span>
-        </div>
+        {/* На телефоне текст не помещается — делаем бегущую строку */}
+        <p className="w-full whitespace-nowrap text-center max-md:w-auto max-md:animate-marquee motion-reduce:max-md:w-full motion-reduce:max-md:animate-none motion-reduce:max-md:truncate">
+          <span className="font-medium uppercase">Descuento Extra:</span> Aplicado al carrito
+          sobre dos o más artículos
+        </p>
       </div>
 
-      {/* Header / Navigation */}
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 text-slate-900 backdrop-blur">
-        {/* полоса на 100vw */}
-        <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-          {/* строка хедера, фиксируем высоту */}
-          <div className="relative h-16">
-            {/* LEFT — прижат к левому краю окна */}
-            <nav className="absolute inset-y-0 left-3 sm:left-4 lg:left-6 flex items-center gap-5 text-sm">
-              <Link href="/" className="hover:text-black">
-                INICIO
+      {/* Шапка */}
+      <header
+        className={`${metropolis.className} sticky top-0 z-50 border-b border-slate-200 bg-white/90 text-[#131314] backdrop-blur`}
+      >
+        <div className="relative flex h-16 items-center justify-between px-[14px] md:px-4 lg:px-[22px]">
+          {/* Слева: бургер (до 1024px) или меню (компьютер) */}
+          <div className="lg:hidden">
+            <MobileMenu fontClassName={metropolis.className} />
+          </div>
+          <nav aria-label="Menú principal" className="hidden items-center gap-[38px] text-[12px] lg:flex">
+            {NAV_LINKS.map((l) => (
+              <Link key={l.href} href={l.href} className="uppercase hover:text-[#517EC1]">
+                {l.label}
               </Link>
-              <Link href="/joyas" className="hover:text-black">
-                JOYAS
-              </Link>
-              <Link href="/regalos" className="hover:text-black">
-                REGALOS
-              </Link>
-              <a href="#tendencias" className="hover:text-black">
-                TENDENCIAS
-              </a>
+            ))}
+          </nav>
+
+          {/* По центру: логотип */}
+          <Link
+            href="/"
+            aria-label="Joyas Rodriguez — inicio"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          >
+            <Image
+              src="/icons/logo.png"
+              alt="Joyas Rodriguez"
+              width={185}
+              height={38}
+              priority
+              className="h-auto w-[142px] md:w-[185px]"
+            />
+          </Link>
+
+          {/* Справа: доп. меню (компьютер) и иконки */}
+          <div className="flex items-center gap-[38px]">
+            <nav aria-label="Ayuda" className="hidden items-center gap-[38px] text-[12px] lg:flex">
+              {SECONDARY_LINKS.map((l) => (
+                <a key={l.href} href={l.href} className="uppercase hover:text-[#517EC1]">
+                  {l.label}
+                </a>
+              ))}
             </nav>
-
-            {/* CENTER — логотип строго по центру */}
-            <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex items-center">
-              <Link
-                href="/"
-                aria-label="Joyas Rodriguez – logo"
-                className="block"
-              >
-                <Image
-                  src="/icons/logo.png"
-                  alt="Joyas Rodriguez"
-                  width={300}
-                  height={64}
-                  priority
-                  className="w-[120px] sm:w-[140px] md:w-[170px] lg:w-[200px] h-auto object-contain"
-                  sizes="(max-width:640px) 140px, (max-width:768px) 160px, (max-width:1024px) 200px, 240px"
-                />
-              </Link>
-            </div>
-
-            {/* RIGHT — прижат к правому краю окна */}
-            <div className="absolute inset-y-0 right-3 sm:right-4 lg:right-6 flex items-center gap-6">
-              <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-wide">
-                <a href="#contacto" className="hover:text-slate-700">
-                  CONTACTO
-                </a>
-                <a href="#pedido" className="hover:text-slate-700">
-                  SIGUE TU PEDIDO
-                </a>
-              </nav>
-              <div className="flex items-center gap-3 sm:gap-4">
-                <button
-                  aria-label="Cuenta"
-                  className="inline-flex h-8 w-8 items-center justify-center hover:opacity-80"
-                >
-                  <Image src="/icons/user.svg" alt="" width={20} height={20} />
-                </button>
-                <button
-                  aria-label="Buscar"
-                  className="inline-flex h-8 w-8 items-center justify-center hover:opacity-80"
-                >
-                  <Image
-                    src="/icons/search.svg"
-                    alt=""
-                    width={20}
-                    height={20}
-                  />
-                </button>
-                <button
-                  aria-label="Carrito"
-                  className="inline-flex h-8 w-8 items-center justify-center hover:opacity-80"
-                >
-                  <Image src="/icons/bag.svg" alt="" width={20} height={20} />
-                </button>
-              </div>
+            <div className="flex items-center gap-[14px] md:gap-4">
+              <button type="button" aria-label="Cuenta" className="hover:opacity-70">
+                <Image src="/icons/user.svg" alt="" width={24} height={24} />
+              </button>
+              <button type="button" aria-label="Buscar" className="hidden hover:opacity-70 md:block">
+                <Image src="/icons/search.svg" alt="" width={24} height={24} />
+              </button>
+              <button type="button" aria-label="Carrito" className="hover:opacity-70">
+                <Image src="/icons/bag.svg" alt="" width={24} height={24} />
+              </button>
             </div>
           </div>
         </div>
