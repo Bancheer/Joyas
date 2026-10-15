@@ -99,6 +99,19 @@ const assets = [
   ["instagram/foto-2.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "a523a.png")],
   ["instagram/foto-3.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "44e5a.png")],
   ["instagram/foto-4.png", figma("fdc1af84-714f-4551-b25d-03c14f83ac8b", "6ee78.png")],
+
+  // ── Мобильная версия (15.10) ──
+  ["icons/hamburger.svg", figma("f41d971d-58fb-4fb9-8866-7fe439794a0a", "da68b.svg")],
+  ["icons/story-ring.svg", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "c9885.svg")],
+  ["joyas/story-anillos.png", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "61d5e.png")],
+  ["joyas/story-pulseras.png", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "6199e.png")],
+  ["joyas/story-pendientes.png", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "6430a.png")],
+  ["joyas/story-collares.png", figma("77b795dc-7948-46fd-9c60-c05418fa1e80", "6c2b0.png")],
+  ["assets/hero-mobile.png", figma("42cd0952-25fd-4707-8a6a-2d66d19956c2", "a033d.png")],
+  ["assets/hero-tablet.png", figma("bf120182-5f6c-4cc1-83a8-a4372db06092", "02e57.png")],
+  ["icons/trust-caja.svg", "https://www.figma.com/api/mcp/asset/0abe9def-9f61-4eec-8d73-870ec8d9c155.svg"],
+  ["icons/trust-garantia.svg", "https://www.figma.com/api/mcp/asset/9a3a306e-f445-43c8-98d4-8728d9c74de3.svg"],
+  ["icons/trust-envio.svg", "https://www.figma.com/api/mcp/asset/ee75dbbc-0616-440f-ac25-a88cfd81b47e.svg"],
 ];
 
 const exists = (p) =>

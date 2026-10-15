@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { nunito } from "./fonts";
 
 const products = [
   {
@@ -81,24 +82,24 @@ export default function BestSellersCarousel({
   return (
     <section
       id="best-sellers"
-      className="w-full bg-white mt-[140px] pt-[96px] pb-12 sm:pb-16"
+      className="mt-[100px] w-full bg-white md:mt-[140px]"
     >
-      <div className="mb-6 flex items-start justify-between px-[4vw] sm:px-[2vw] lg:px-[1.5vw]">
+      <div className="mb-[30px] flex items-end justify-between px-[14px] md:px-4 lg:px-[22px]">
         <div>
           <h2
-            className={`${fontClassName} text-[25px] leading-tight text-slate-900 uppercase sm:text-[30px]`}
+            className={`${nunito.className} text-[28px] font-semibold uppercase leading-[1.35] text-[#131314] md:text-[34px]`}
           >
             LOS MÁS VENDIDOS
           </h2>
           <a
             href="#categorias"
-            className={`${fontClassName} mt-2 inline-flex items-center gap-2 text-[12px] font-medium tracking-wide text-[#517EC1] hover:underline`}
+            className={`${fontClassName} mt-2 inline-flex items-center gap-2 text-[16px] font-medium uppercase tracking-[0.16px] text-[#517EC1] hover:underline`}
           >
             VER TODO <span aria-hidden="true">⟶</span>
           </a>
         </div>
 
-        <div className="flex gap-2" aria-label="Controles del carrusel">
+        <div className="hidden gap-2 md:flex" aria-label="Controles del carrusel">
           <button
             type="button"
             aria-label="Ver productos anteriores"
@@ -150,20 +151,20 @@ export default function BestSellersCarousel({
         aria-label="Productos más vendidos"
         tabIndex={0}
         onScroll={updateArrows}
-        className="flex snap-x snap-mandatory gap-[3vw] overflow-x-auto scroll-smooth scroll-pl-[4vw] px-[4vw] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-[2vw] sm:scroll-pl-[2vw] sm:px-[2vw] lg:gap-[1.5vw] lg:scroll-pl-[1.5vw] lg:px-[1.5vw]"
+        className="flex snap-x snap-mandatory gap-[10px] overflow-x-auto scroll-smooth scroll-pl-[14px] px-[14px] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:scroll-pl-4 md:px-4 lg:gap-[1.5vw] lg:scroll-pl-[22px] lg:px-[22px]"
       >
         {products.map((product) => (
           <article
             key={product.name}
             data-product-card
-            className="w-[78vw] min-w-0 shrink-0 snap-start sm:w-[43vw] lg:w-[29vw]"
+            className="w-[294px] min-w-0 shrink-0 snap-start md:w-[420px] lg:w-[29vw]"
           >
-            <div className="relative grid aspect-[4/5] w-full place-items-center overflow-hidden bg-[#FBFAFB]">
+            <div className="relative grid aspect-[420/520] w-full place-items-center overflow-hidden bg-[#FBFAFB]">
               <Image
                 src={product.src}
                 alt={product.name}
                 fill
-                sizes="(max-width: 640px) 78vw, (max-width: 1024px) 43vw, 29vw"
+                sizes="(max-width: 767px) 294px, (max-width: 1023px) 420px, 29vw"
                 className="object-cover object-center"
               />
               <span
