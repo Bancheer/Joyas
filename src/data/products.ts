@@ -76,11 +76,19 @@ const templates = [
 ];
 
 // Атрибуты-заглушки по номеру фото (1–16)
-const attrs: Partial<
-  Record<number, Pick<Product, "materials" | "size" | "colors">>
-> = {
+const attrs: Partial<Record<number, Partial<Omit<Product, "slug" | "image">>>> = {
   1: { materials: ["plata-925", "oro-18k"], size: "ajustable", colors: ["plata", "oro"] },
-  5: { materials: ["plata-925"], size: "con-tallas", colors: ["plata"] },
+  // №5 — кольцо с горами. На нём сделана страница товара из макета, поэтому
+  // название взято из карусели на главной, а цены и отзывы — со страницы товара в макете.
+  5: {
+    name: "Anillo Aventura",
+    price: 490.99,
+    compareAtPrice: 1190.99,
+    reviews: 24,
+    materials: ["plata-925"],
+    size: "con-tallas",
+    colors: ["plata"],
+  },
   6: { materials: ["plata-925", "impermeable"], size: "con-tallas", colors: ["plata"] },
   10: { materials: ["plata-925"], size: "con-tallas", colors: ["plata"] },
   14: { materials: ["plata-925", "impermeable"], size: "ajustable", colors: ["plata"] },
@@ -120,4 +128,62 @@ export function formatPrice(value: number) {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })} MXN`;
+}
+
+// ─── Страница товара ───────────────────────────────────────────────
+
+export type ProductDetails = {
+  /** Цветные плашки над галереей и над названием */
+  labels: { text: string; color: string }[];
+  gallery: string[];
+  /** Размеры для выпадающего списка «Talla» (только для колец «con tallas») */
+  sizes?: string[];
+  story?: { title: string; paragraphs: string[] };
+  includes: string[];
+  specs: { label: string; value: string }[];
+  /** Товар для блока «Completa el look» */
+  lookSlug?: string;
+};
+
+// ВРЕМЕННО: размеры-заглушки, заменить реальными
+const DEMO_SIZES = ["5", "6", "7", "8", "9"];
+
+// Тексты из макета Figma (страница товара). Для остальных товаров — значения по умолчанию.
+const DETAILS: Partial<Record<string, Partial<ProductDetails>>> = {
+  "producto-05": {
+    labels: [
+      { text: "Los más vendidos", color: "#F5743C" },
+      { text: "-50%", color: "#1BAA7E" },
+    ],
+    gallery: Array.from({ length: 8 }, (_, i) => `/productos/aventura/foto-${i + 1}.png`),
+    story: {
+      title: "UN SÍMBOLO DE EMPODERAMIENTO INTERIOR",
+      paragraphs: [
+        "Este precioso Anillo Reina simboliza la importancia del compromiso contigo misma y del empoderamiento interior.",
+        "Es un recordatorio de que somos importantes y especiales para nosotras mismas y que NUNCA debemos descuidarnos y permitir que otros nos falten el respeto.",
+      ],
+    },
+    lookSlug: "producto-03",
+  },
+};
+
+export function getProduct(slug: string) {
+  return PRODUCTS.find((p) => p.slug === slug);
+}
+
+export function getProductDetails(product: Product): ProductDetails {
+  const d = DETAILS[product.slug] ?? {};
+  return {
+    labels: d.labels ?? (product.badge ? [{ text: product.badge, color: "#E38465" }] : []),
+    gallery: d.gallery ?? [product.image],
+    sizes: d.sizes ?? (product.size === "con-tallas" ? DEMO_SIZES : undefined),
+    story: d.story,
+    // Из макета: «Incluye tarjeta y caja regalo», «Plata de ley 925»
+    includes: d.includes ?? ["La joya", "Tarjeta con mensaje", "Caja de regalo"],
+    specs: d.specs ?? [
+      { label: "Material", value: "Plata de ley 925" },
+      { label: "Talla", value: product.size === "ajustable" ? "Ajustable" : "Con tallas" },
+    ],
+    lookSlug: d.lookSlug,
+  };
 }
