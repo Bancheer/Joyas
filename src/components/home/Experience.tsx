@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import ScrollCarousel from "@/components/ScrollCarousel";
 import { metropolis, nunito } from "@/app/fonts";
 
-// «La experiencia Joyas Rodriguez» (макет: homepage 294:464)
+// «La experiencia Joyas Rodriguez». Телефон: карусель по одному пункту с точками (298:1502),
+// планшет: пункты столбиком (312:4944), компьютер: 4 в ряд (294:464).
 const items = [
   {
     icon: "/icons/experiencia-envio.svg",
@@ -34,45 +36,68 @@ const items = [
   },
 ];
 
+type Item = (typeof items)[number];
+
+function ExperienceItem({ item }: { item: Item }) {
+  return (
+    <div className="flex flex-col items-center gap-[18px] text-center">
+      <div className="flex flex-col items-center gap-3">
+        <Image src={item.icon} alt="" width={164} height={126} />
+        <div className="flex max-w-[296px] flex-col gap-[13px] leading-[1.4]">
+          <h3 className="text-[18px] font-medium tracking-[0.18px] text-[#131314]">{item.title}</h3>
+          <p className="text-[12px] tracking-[0.12px] text-[#2A2B2D]">{item.text}</p>
+        </div>
+      </div>
+      <Link
+        href={item.href}
+        className="group flex items-center gap-[3px] text-[14px] font-medium uppercase tracking-[0.14px] text-[#517EC1]"
+      >
+        {item.cta}
+        <Image
+          src="/icons/arrow-right-blue.svg"
+          alt=""
+          width={32}
+          height={32}
+          className="transition-transform group-hover:translate-x-1"
+        />
+      </Link>
+    </div>
+  );
+}
+
 export default function Experience() {
   return (
     <section
       id="experiencia"
       aria-labelledby="experiencia-title"
-      className={`${metropolis.className} mt-16 bg-[#F4F5FB] px-4 py-12 sm:px-8 lg:mt-[140px] lg:px-[80px] lg:py-[60px]`}
+      className={`${metropolis.className} mt-[100px] bg-[#F4F5FB] py-[60px] md:mt-[140px] lg:px-[80px]`}
     >
       <h2
         id="experiencia-title"
-        className={`${nunito.className} mx-auto max-w-[886px] text-center text-[24px] font-semibold uppercase leading-[1.35] text-[#131314] sm:text-[28px] lg:text-[34px]`}
+        className={`${nunito.className} mx-auto max-w-[886px] px-[14px] text-center text-[28px] font-semibold uppercase leading-[1.35] text-[#131314] md:px-4 md:text-[34px]`}
       >
         La experiencia Joyas Rodriguez
       </h2>
 
-      <ul className="mx-auto mt-10 grid max-w-[1280px] gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-[50px] lg:grid-cols-4">
+      {/* Телефон — карусель */}
+      <div className="md:hidden">
+        <ScrollCarousel
+          label="La experiencia Joyas Rodriguez"
+          trackClassName="mt-[30px] flex"
+          itemClassName="flex w-full justify-center px-[14px]"
+          dotsClassName="mt-[50px]"
+        >
+          {items.map((item) => (
+            <ExperienceItem key={item.title} item={item} />
+          ))}
+        </ScrollCarousel>
+      </div>
+
+      {/* Планшет — столбиком, компьютер — 4 в ряд */}
+      <ul className="mx-auto mt-[50px] hidden max-w-[1280px] flex-col items-center gap-8 md:flex lg:grid lg:grid-cols-4 lg:items-start">
         {items.map((item) => (
-          <li key={item.title} className="flex flex-col items-center gap-[18px] text-center">
-            <div className="flex flex-col items-center gap-3">
-              <Image src={item.icon} alt="" width={164} height={126} />
-              <div className="flex max-w-[296px] flex-col gap-[13px] leading-[1.4]">
-                <h3 className="text-[18px] font-medium tracking-[0.18px] text-[#131314]">
-                  {item.title}
-                </h3>
-                <p className="text-[12px] tracking-[0.12px] text-[#2A2B2D]">{item.text}</p>
-              </div>
-            </div>
-            <Link
-              href={item.href}
-              className="group flex items-center gap-[3px] text-[14px] font-medium uppercase tracking-[0.14px] text-[#517EC1]"
-            >
-              {item.cta}
-              <Image
-                src="/icons/arrow-right-blue.svg"
-                alt=""
-                width={32}
-                height={32}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </Link>
+          <li key={item.title}>
+            <ExperienceItem item={item} />
           </li>
         ))}
       </ul>

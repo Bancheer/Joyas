@@ -7,18 +7,18 @@ export default function Newsletter() {
     <section
       id="newsletter"
       aria-labelledby="newsletter-title"
-      className={`${metropolis.className} mx-auto mt-16 max-w-[796px] px-4 pb-16 text-center lg:mt-[130px] lg:pb-[130px]`}
+      className={`${metropolis.className} mx-auto mt-[100px] max-w-[796px] px-[14px] pb-[100px] text-center md:mt-[130px] md:px-4 md:pb-[130px]`}
     >
       <h2
         id="newsletter-title"
-        className={`${nunito.className} text-[24px] font-semibold uppercase leading-[1.35] text-[#131314] sm:text-[28px] lg:text-[34px]`}
+        className={`${nunito.className} text-[28px] font-semibold uppercase leading-[1.35] text-[#131314] md:text-[34px]`}
       >
         Inscríbete a nuestra newsletter
       </h2>
       <p className="mt-2 text-[14px] leading-[1.2] tracking-[0.14px] text-[#2A2B2D]">
         Suscríbete para recibir ofertas especiales, sorteos gratuitos y ofertas únicas.
       </p>
-      <form action="#" className="mx-auto mt-[30px] flex max-w-[542px] items-end gap-3">
+      <form action="#" className="mx-auto mt-[30px] flex max-w-[325px] md:max-w-[542px] items-end gap-3">
         <label htmlFor="newsletter-email" className="sr-only">
           E-mail
         </label>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import CategoryStories from "@/components/CategoryStories";
 import { metropolis, nunito } from "../fonts";
 
 export const metadata: Metadata = {
@@ -31,14 +32,6 @@ const featured = [
     crop: "object-[50%_79%] lg:object-[50%_84%]",
     minWidth: true,
   },
-];
-
-// Круглые «сторис» категорий — только на телефоне (макет 310:1039)
-const stories = [
-  { name: "Anillos", href: "/joyas/anillos", image: "/joyas/story-anillos.png" },
-  { name: "Pulseras", href: "/joyas/pulseras", image: "/joyas/story-pulseras.png" },
-  { name: "Pendientes", href: "/joyas/pendientes", image: "/joyas/story-pendientes.png" },
-  { name: "Collares", href: "/joyas/collares", image: "/joyas/story-collares.png" },
 ];
 
 // Категории (карточки 694×295 на сером фоне #F6F6F6).
@@ -119,20 +112,7 @@ export default function JoyasPage() {
   return (
     <main className={`${metropolis.className} bg-white text-[#131314]`}>
       {/* Сторис категорий — только на телефоне */}
-      <nav
-        aria-label="Categorías"
-        className="flex justify-between border-t border-[#F0F2FF] px-[21px] pb-[18px] pt-[15px] md:hidden"
-      >
-        {stories.map((st) => (
-          <Link key={st.href} href={st.href} className="flex w-[60px] flex-col items-center gap-2">
-            <span className="relative size-[60px]">
-              <Image src={st.image} alt="" width={54} height={54} className="absolute left-[3px] top-[3px] rounded-full" />
-              <Image src="/icons/story-ring.svg" alt="" width={64} height={64} className="absolute -inset-[2px] max-w-none" />
-            </span>
-            <span className="whitespace-nowrap text-[11px] uppercase">{st.name}</span>
-          </Link>
-        ))}
-      </nav>
+      <CategoryStories />
 
       {/* Más vendidos / Novedades: 1 колонка до 1024px, 2 — на компьютере */}
       <section className="px-[14px] md:px-[15px] md:pt-6 lg:px-[22px] lg:pt-0">

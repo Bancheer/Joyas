@@ -18,12 +18,12 @@ export default function InstagramSection() {
     <section
       id="instagram"
       aria-labelledby="instagram-title"
-      className={`${metropolis.className} mt-16 overflow-hidden lg:mt-[140px]`}
+      className={`${metropolis.className} mt-[100px] overflow-hidden md:mt-[140px]`}
     >
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-4 sm:px-[22px] lg:flex-row lg:justify-between lg:gap-[113px]">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-5 px-[14px] md:gap-[30px] md:px-4 lg:flex-row lg:px-[22px] lg:justify-between lg:gap-[113px]">
         <h2
           id="instagram-title"
-          className={`${nunito.className} text-[24px] font-semibold uppercase leading-[1.35] text-[#131314] sm:text-[28px] lg:max-w-[590px] lg:text-[34px]`}
+          className={`${nunito.className} text-[28px] font-semibold uppercase leading-[1.35] text-[#131314] md:text-[34px] lg:max-w-[590px]`}
         >
           Únete a los más de 30.000 de nuestra cuenta Instagram
         </h2>
@@ -45,12 +45,13 @@ export default function InstagramSection() {
         </div>
       </div>
 
-      {/* В макете ряд из 4 фото шире экрана (1710px) и обрезан по краям */}
-      <ul className="mt-8 flex snap-x snap-mandatory gap-[10px] overflow-x-auto px-4 lg:-ml-[9.375%] lg:mt-[50px] lg:grid lg:w-[118.75%] lg:grid-cols-4 lg:overflow-visible lg:px-0">
+      {/* В макете ряд фото шире экрана и обрезан по краям: на телефоне видно два фото 200×211,
+          на планшете — два 420×444, на компьютере — четыре (ряд 1710px) */}
+      <ul className="-ml-[29px] mt-[54px] flex w-[calc(100%+29px)] snap-x snap-mandatory gap-[10px] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:-ml-[138px] md:w-[calc(100%+138px)] lg:-ml-[9.375%] lg:mt-[50px] lg:grid lg:w-[118.75%] lg:grid-cols-4 lg:overflow-visible">
         {photos.map((p, i) => (
           <li
             key={p.src}
-            className="relative aspect-[420/444] w-[75%] shrink-0 snap-start overflow-hidden sm:w-[45%] lg:w-auto"
+            className="relative aspect-[200/211] w-[200px] shrink-0 snap-start overflow-hidden md:aspect-[420/444] md:w-[420px] lg:w-auto"
           >
             <a
               href={INSTAGRAM_URL}
@@ -65,7 +66,7 @@ export default function InstagramSection() {
                   src={p.src}
                   alt=""
                   fill
-                  sizes="(max-width: 639px) 75vw, (max-width: 1023px) 45vw, 30vw"
+                  sizes="(max-width: 767px) 200px, (max-width: 1023px) 420px, 30vw"
                   className="object-cover transition-transform duration-700 hover:scale-[1.03]"
                   style={{ objectPosition: p.position }}
                 />
