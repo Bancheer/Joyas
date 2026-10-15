@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Nunito } from "next/font/google";
+import { Nunito, Parisienne } from "next/font/google";
 
 // Metropolis — замена шрифта Gotham из макета (Book = 400, Medium = 500)
 export const metropolis = localFont({
@@ -14,6 +14,13 @@ export const metropolis = localFont({
 // Nunito SemiBold — заголовки (стиль h1 в макете: 34px / 1.35)
 export const nunito = Nunito({
   weight: "600",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Parisienne — рукописные заголовки (баннеры коллекций, «El Regalo Perfecto»)
+export const parisienne = Parisienne({
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
