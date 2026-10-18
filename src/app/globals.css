@@ -49,6 +49,15 @@ html::-webkit-scrollbar-thumb {
   border-radius: 6px;
   border: 2px solid #E6E9F7;
 }
+/* На телефоне и планшете (< 1024px) полосу прокрутки не показываем — листают пальцем */
+@media (max-width: 1023px) {
+  html {
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
+  }
+}
 /* Блоки шириной 100vw чуть шире области с полосой прокрутки — не даём им вызвать горизонтальную прокрутку */
 body {
   overflow-x: clip;

@@ -39,15 +39,22 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <main className={`${metropolis.className} bg-white text-[#131314]`}>
-      <div className="grid gap-8 pb-16 sm:px-[2.08vw] lg:grid-cols-[minmax(0,61.25fr)_minmax(0,27.78fr)] lg:gap-[4.72vw] lg:px-[1.53vw] lg:pb-[140px]">
-        {/* ── Галерея: на телефоне листается свайпом, на компьютере сетка 2×4 ── */}
-        <section aria-label="Fotos del producto" className="-mx-4 sm:mx-0">
-          <ul className="flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 sm:px-0 lg:grid lg:grid-cols-2 lg:gap-[14px] lg:overflow-visible">
+      <div className="grid gap-8 px-[3.89vw] pb-16 md:px-[2.08vw] lg:grid-cols-[minmax(0,61.25fr)_minmax(0,27.78fr)] lg:gap-[4.72vw] lg:px-[1.53vw] lg:pb-[140px]">
+        {/* ── Галерея: на телефоне листается свайпом, на компьютере сетка 2×4.
+               Если фото одно — оно на всю ширину и ничего не листается ── */}
+        <section aria-label="Fotos del producto" className="-mx-[3.89vw] md:mx-0">
+          <ul
+            className={
+              singleImage
+                ? "block"
+                : "flex snap-x snap-mandatory scroll-pl-[3.89vw] gap-2 overflow-x-auto px-[3.89vw] [scrollbar-width:none] md:scroll-pl-0 md:px-0 lg:grid lg:grid-cols-2 lg:gap-[14px] lg:overflow-visible [&::-webkit-scrollbar]:hidden"
+            }
+          >
             {details.gallery.map((src, i) => (
               <li
                 key={src}
-                className={`relative aspect-square w-[85%] shrink-0 snap-start overflow-hidden bg-[#F3F3F3] sm:w-[60%] lg:w-auto ${
-                  singleImage ? "lg:col-span-2" : ""
+                className={`relative aspect-square shrink-0 overflow-hidden bg-[#F3F3F3] ${
+                  singleImage ? "w-full" : "w-[85%] snap-start sm:w-[60%] lg:w-auto"
                 }`}
               >
                 {singleImage ? (
@@ -55,7 +62,7 @@ export default async function ProductPage({ params }: Props) {
                     className="absolute left-1/2 top-1/2 aspect-square -translate-x-1/2 -translate-y-1/2"
                     style={{ width: `${product.imageScale * 100}%` }}
                   >
-                    <Image src={src} alt={product.name} fill priority sizes="(max-width: 1023px) 85vw, 60vw" className="object-cover" />
+                    <Image src={src} alt={product.name} fill priority sizes="(max-width: 1023px) 100vw, 60vw" className="object-cover" />
                   </span>
                 ) : (
                   <Image

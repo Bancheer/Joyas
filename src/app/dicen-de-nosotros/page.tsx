@@ -51,10 +51,11 @@ export default function DicenDeNosotrosPage() {
       />
 
       {/* ── Cada joya cuenta una historia… (видеоотзыв) ── */}
-      <section className="mt-[100px] flex flex-col items-center gap-[50px] bg-[#F4F5FB] px-[14px] py-20 md:mt-[140px] md:gap-[50px] md:px-4 lg:flex-row lg:items-start lg:justify-between lg:gap-[106px] lg:pl-[82px] lg:pr-[22px]">
-        <div className="flex flex-col items-center gap-5 text-center">
+      <section className="mt-[100px] flex flex-col items-center gap-[50px] bg-[#F4F5FB] px-[14px] py-20 md:mt-[140px] md:gap-[50px] md:px-4 lg:flex-row lg:items-start lg:justify-between lg:gap-[4vw] lg:pl-[5.69vw] lg:pr-[1.53vw]">
+        {/* Текст может сжиматься, иначе вместе с видео блок шире экрана и видео вылезает за правый край */}
+        <div className="flex flex-col items-center gap-5 text-center lg:min-w-0 lg:flex-1">
           <div className="flex flex-col items-center gap-6">
-            <h2 className={`${parisienne.className} max-w-[331px] text-[44px] leading-[1.1] md:max-w-none md:whitespace-nowrap md:text-[54px] md:leading-normal`}>
+            <h2 className={`${parisienne.className} max-w-[331px] text-[44px] leading-[1.1] md:max-w-none md:whitespace-nowrap md:text-[54px] lg:whitespace-normal md:leading-normal`}>
               Cada joya cuenta una historia...
             </h2>
             <a

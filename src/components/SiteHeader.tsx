@@ -105,13 +105,13 @@ export default function SiteHeader() {
             {/* Иконки окрашиваются через mask, поэтому при наведении синеют, как пункты меню */}
             <div className="flex items-center gap-[14px] md:gap-4">
               <button type="button" aria-label="Cuenta" className="text-[#131314] transition-colors hover:text-[#517EC1]">
-                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/user.svg)_center/contain_no-repeat] [mask:url(/icons/user.svg)_center/contain_no-repeat]" />
+                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/header-user.svg)_center/contain_no-repeat] [mask:url(/icons/header-user.svg)_center/contain_no-repeat]" />
               </button>
               <button type="button" aria-label="Buscar" className="hidden text-[#131314] transition-colors hover:text-[#517EC1] md:block">
-                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/search.svg)_center/contain_no-repeat] [mask:url(/icons/search.svg)_center/contain_no-repeat]" />
+                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/header-search.svg)_center/contain_no-repeat] [mask:url(/icons/header-search.svg)_center/contain_no-repeat]" />
               </button>
               <button type="button" aria-label="Carrito" className="text-[#131314] transition-colors hover:text-[#517EC1]">
-                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/bag.svg)_center/contain_no-repeat] [mask:url(/icons/bag.svg)_center/contain_no-repeat]" />
+                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/header-bag.svg)_center/contain_no-repeat] [mask:url(/icons/header-bag.svg)_center/contain_no-repeat]" />
               </button>
             </div>
           </div>
