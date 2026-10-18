@@ -3,28 +3,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useCart } from "@/components/cart/CartProvider";
 
 // Размер + количество + кнопка «Agregar al carrito» + иконки оплаты (макет: 382:1056, 382:999)
 export default function ProductPurchase({
+  slug,
   productName,
   sizes,
 }: {
+  slug: string;
   productName: string;
   sizes?: string[];
 }) {
+  const { add } = useCart();
   const [size, setSize] = useState(sizes?.[1] ?? sizes?.[0] ?? "");
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
     if (!added) return;
-    const t = setTimeout(() => setAdded(false), 2000);
+    const t = setTimeout(() => setAdded(false), 4000);
     return () => clearTimeout(t);
   }, [added]);
 
+  // Кладём в корзину выбранный размер и количество; счётчик в шапке обновится сам
   const addToCart = () => {
-    // TODO: подключить настоящую корзину (Shopify и т.п.). Пока только визуальный отклик.
+    add(slug, qty, sizes && sizes.length > 0 ? size : undefined);
     setAdded(true);
+    setQty(1);
   };
 
   return (
@@ -105,6 +111,14 @@ export default function ProductPurchase({
         >
           {added ? "Añadido al carrito ✓" : "Agregar al carrito"}
         </button>
+        {added && (
+          <Link
+            href="/carrito"
+            className="-mt-1 text-[14px] font-medium uppercase tracking-[0.14px] text-[#517EC1] underline-offset-4 hover:underline"
+          >
+            Ver carrito →
+          </Link>
+        )}
         <PaymentIcons />
       </div>
     </div>
@@ -112,7 +126,7 @@ export default function ProductPurchase({
 }
 
 // Иконки оплаты в порядке макета: Mastercard, Visa, Apple Pay, Discover, Bancontact, Google Pay, Amex
-function PaymentIcons() {
+export function PaymentIcons() {
   const boxed = "relative h-[32px] w-[46px] rounded-[4px] border border-[#F2F4F7] bg-white";
   return (
     <ul className="flex flex-wrap justify-center gap-3" aria-label="Métodos de pago">

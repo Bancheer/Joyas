@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { metropolis } from "@/app/fonts";
 import MobileMenu from "./MobileMenu";
+import CartButton from "./cart/CartButton";
 import { JOYAS_MENU, NAV_LINKS, SECONDARY_LINKS, joyasMenuHref } from "./navLinks";
 
 // Промо-полоса + шапка сайта (общие для всех страниц).
@@ -110,9 +111,8 @@ export default function SiteHeader() {
               <button type="button" aria-label="Buscar" className="hidden text-[#131314] transition-colors hover:text-[#517EC1] md:block">
                 <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/header-search.svg)_center/contain_no-repeat] [mask:url(/icons/header-search.svg)_center/contain_no-repeat]" />
               </button>
-              <button type="button" aria-label="Carrito" className="text-[#131314] transition-colors hover:text-[#517EC1]">
-                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/header-bag.svg)_center/contain_no-repeat] [mask:url(/icons/header-bag.svg)_center/contain_no-repeat]" />
-              </button>
+              {/* Корзина: ссылка на /carrito со счётчиком товаров */}
+              <CartButton />
             </div>
           </div>
         </div>

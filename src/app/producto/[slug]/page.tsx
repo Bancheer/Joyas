@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductPurchase from "@/components/ProductPurchase";
+import AddToCartButton from "@/components/cart/AddToCartButton";
 import { metropolis } from "../../fonts";
 import {
   PRODUCTS,
@@ -117,7 +118,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           <div className="mt-[30px]">
-            <ProductPurchase productName={product.name} sizes={details.sizes} />
+            <ProductPurchase slug={product.slug} productName={product.name} sizes={details.sizes} />
           </div>
 
           <ul className="mt-[30px] flex flex-col gap-[11px] text-[14px] leading-[1.35] text-[#565A61]">
@@ -322,13 +323,11 @@ function CompleteTheLook({ product }: { product: Product }) {
           </span>
         </span>
       </Link>
-      {/* TODO: добавить в корзину, когда появится корзина */}
-      <button
-        type="button"
+      <AddToCartButton
+        slug={product.slug}
+        productName={product.name}
         className="mt-5 h-[49px] w-full bg-[#517EC1] text-[14px] font-medium uppercase text-white transition-colors hover:bg-[#4570b0]"
-      >
-        Añadir al carrito
-      </button>
+      />
     </section>
   );
 }

@@ -2,40 +2,24 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { nunito } from "./fonts";
+import { formatPrice, getProduct } from "@/data/products";
 
-const products = [
-  {
-    name: "Anillo Girasol",
-    src: "/carousel/Anillo Girasol.jpg",
-    priceOld: "$809,99 MXN",
-    priceNew: "$440,99 MXN",
-  },
-  {
-    name: "Anillo Lotus - Empieza de nuevo",
-    src: "/carousel/Anillo Lotus - Empieza de nuevo.jpg",
-    priceOld: "$909,99 MXN",
-    priceNew: "$490,99 MXN",
-  },
-  {
-    name: "Anillo Aventura",
-    src: "/carousel/Anillo Aventura.jpg",
-    priceOld: "$809,99 MXN",
-    priceNew: "$440,99 MXN",
-  },
-  {
-    name: "Anillo Elijo mi Paz",
-    src: "/carousel/Anillo Elijo mi Paz.jpg",
-    priceOld: "$980,99 MXN",
-    priceNew: "$490,99 MXN",
-  },
-  {
-    name: "A mi Hija - Anillo Universo",
-    src: "/carousel/Anillo Universo.jpg",
-    priceOld: "$980,99 MXN",
-    priceNew: "$490,99 MXN",
-  },
+// Карусель «Los más vendidos»: фото из карусели макета, а название, цены и отзывы —
+// из каталога (src/data/products.ts), чтобы совпадали со страницей товара.
+const items = [
+  { slug: "producto-01", src: "/carousel/Anillo Girasol.jpg" },
+  { slug: "producto-03", src: "/carousel/Anillo Lotus - Empieza de nuevo.jpg" },
+  { slug: "producto-05", src: "/carousel/Anillo Aventura.jpg" },
+  { slug: "producto-02", src: "/carousel/Anillo Elijo mi Paz.jpg" },
+  { slug: "producto-04", src: "/carousel/Anillo Universo.jpg" },
 ];
+
+const products = items.flatMap(({ slug, src }) => {
+  const p = getProduct(slug);
+  return p ? [{ ...p, src }] : [];
+});
 
 export default function BestSellersCarousel({
   fontClassName,
@@ -153,10 +137,11 @@ export default function BestSellersCarousel({
         className="relative flex snap-x snap-mandatory gap-[2.78vw] overflow-x-auto scroll-pl-[3.89vw] px-[3.89vw] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-[1.3vw] md:scroll-pl-[2.08vw] md:px-[2.08vw] lg:gap-[1.5vw] lg:scroll-pl-[1.53vw] lg:px-[1.53vw]"
       >
         {products.map((product) => (
-          <article
-            key={product.name}
+          <Link
+            key={product.slug}
+            href={`/producto/${product.slug}`}
             data-product-card
-            className="w-[81.67vw] min-w-0 shrink-0 snap-start md:w-[54.69vw] lg:w-[29vw]"
+            className="group block w-[81.67vw] min-w-0 shrink-0 snap-start md:w-[54.69vw] lg:w-[29vw]"
           >
             <div className="relative grid aspect-[420/520] w-full place-items-center overflow-hidden bg-[#FBFAFB]">
               <Image
@@ -164,7 +149,7 @@ export default function BestSellersCarousel({
                 alt={product.name}
                 fill
                 sizes="(max-width: 767px) 82vw, (max-width: 1023px) 55vw, 29vw"
-                className="object-cover object-center"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
               />
               <span
                 className={`${fontClassName} absolute top-[3vw] left-[3vw] bg-[#EC856A] px-2 py-1 text-[10px] text-white uppercase sm:top-[1.5vw] sm:left-[1.5vw] lg:top-[1vw] lg:left-[1vw]`}
@@ -186,25 +171,28 @@ export default function BestSellersCarousel({
                     />
                   ))}
                 </div>
-                <span className="text-[12px] text-slate-600">(42)</span>
+                <span className="text-[12px] text-slate-600">({product.reviews})</span>
               </div>
               <h3
-                className={`${fontClassName} mt-2 text-[14px] text-slate-900`}
+                className={`${fontClassName} mt-2 text-[14px] text-slate-900 group-hover:underline`}
               >
                 {product.name}
               </h3>
               <div
                 className={`${fontClassName} mt-1 flex flex-wrap items-center gap-x-3 text-[13px]`}
               >
-                <span className="text-slate-400 line-through">
-                  {product.priceOld}
-                </span>
+                {product.compareAtPrice && (
+                  <span className="text-slate-400 line-through">
+                    <span className="sr-only">Antes: </span>
+                    {formatPrice(product.compareAtPrice)}
+                  </span>
+                )}
                 <span className="font-medium text-slate-900">
-                  {product.priceNew}
+                  {formatPrice(product.price)}
                 </span>
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </section>
