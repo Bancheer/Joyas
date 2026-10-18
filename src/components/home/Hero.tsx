@@ -82,8 +82,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Компьютер ── */}
-      <div className="relative hidden h-[590px] lg:block">
+      {/* ── Компьютер: блок 1440×590 из макета в vw — масштабируется вместе с шириной экрана ── */}
+      <div className="relative hidden aspect-[1440/590] lg:block">
         <Image
           src="/assets/hero.png"
           alt="Dos amigas con una caja de Joyas Rodriguez"
@@ -93,19 +93,24 @@ export default function Hero() {
           className="object-cover"
         />
 
-        <div className="absolute left-20 top-[120px]">
-          <p aria-hidden className={`${parisienne.className} whitespace-nowrap text-[68px] leading-[1.2]`}>
+        <div className="absolute left-[5.56vw] top-[8.33vw]">
+          <p aria-hidden className={`${parisienne.className} whitespace-nowrap text-[4.72vw] leading-[1.2]`}>
             Cada Joya cuenta
           </p>
           <p
             aria-hidden
-            className={`${parisienne.className} -mt-[21px] ml-[225px] whitespace-nowrap text-[68px] leading-[1.2]`}
+            className={`${parisienne.className} -mt-[1.46vw] ml-[15.63vw] whitespace-nowrap text-[4.72vw] leading-[1.2]`}
           >
             una historia
           </p>
           <h1 className="sr-only">Cada Joya cuenta una historia</h1>
-          <p className="mt-[8px] w-[510px] text-[14px] leading-[1.4] tracking-[0.14px]">{text}</p>
-          <div className="ml-[321px] mt-9">{button}</div>
+          <p className="mt-[0.56vw] w-[35.42vw] text-[max(12px,0.97vw)] leading-[1.4] tracking-[0.01vw]">{text}</p>
+          <Link
+            href="/joyas"
+            className="ml-[22.29vw] mt-[2.5vw] inline-flex items-center justify-center border border-white px-[1.81vw] py-[0.97vw] text-[max(12px,0.97vw)] font-medium uppercase leading-none tracking-[0.01vw] text-white transition-colors hover:bg-white hover:text-[#517EC1]"
+          >
+            Shop collection
+          </Link>
         </div>
       </div>
     </section>

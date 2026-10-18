@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 
 // Бегунок прокрутки страницы в цветах бренда.
 // Обычная полоса прокрутки скрыта (globals.css), поэтому показываем свой бегунок справа:
-// появляется при прокрутке или наведении на правый край, прячется через секунду бездействия.
+// на компьютере виден всегда, на сенсорных экранах появляется при прокрутке и прячется через секунду.
 // Мышью его можно тянуть, клик по дорожке листает на экран вверх/вниз.
 // На сенсорных экранах — тонкий индикатор без перетаскивания (листают пальцем).
 const MARGIN = 4; // отступ дорожки от верха и низа окна
@@ -117,7 +117,7 @@ export default function PageScrollbar() {
         hovered.current = false;
         scheduleHide();
       }}
-      className="group fixed inset-y-0 right-0 z-[70] w-3 pointer-coarse:pointer-events-none"
+      className="group fixed inset-y-0 right-0 z-[70] w-[14px] transition-colors hover:bg-[#F4F5FB]/80 pointer-coarse:pointer-events-none"
     >
       <div
         onPointerDown={onThumbDown}
@@ -127,9 +127,9 @@ export default function PageScrollbar() {
         style={{ top: thumb.top, height: thumb.height }}
         className={`absolute right-[3px] rounded-full transition-[opacity,width,background-color] duration-300 motion-reduce:transition-none pointer-coarse:right-[2px] pointer-coarse:w-[3px] ${
           dragging
-            ? "w-[6px] cursor-grabbing bg-[#517EC1]"
-            : "w-[4px] cursor-grab bg-[#B7BEE2] group-hover:w-[6px] group-hover:bg-[#517EC1]"
-        } ${active || dragging ? "opacity-100" : "opacity-0"}`}
+            ? "w-[8px] cursor-grabbing bg-[#517EC1]"
+            : "w-[6px] cursor-grab bg-[#B7BEE2] group-hover:w-[8px] group-hover:bg-[#517EC1]"
+        } ${active || dragging ? "opacity-100" : "opacity-0 pointer-fine:opacity-100"}`}
       />
     </div>
   );

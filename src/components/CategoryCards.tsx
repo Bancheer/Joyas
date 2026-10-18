@@ -44,7 +44,7 @@ const categories = [
 // Используются на страницах Joyas и Quién somos.
 export default function CategoryCards() {
   return (
-    <div className="mx-auto grid max-w-[694px] gap-2 lg:max-w-[1396px] lg:grid-cols-2">
+    <div className="mx-auto grid gap-2 md:w-[90.36vw] lg:w-full lg:grid-cols-2">
       {categories.map((cat) => (
         <Link
           key={cat.name}

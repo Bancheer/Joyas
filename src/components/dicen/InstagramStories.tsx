@@ -42,9 +42,9 @@ export default function InstagramStories({ className = "" }: { className?: strin
         </div>
       </div>
 
-      <ul className="mt-[50px] flex snap-x snap-mandatory gap-[10px] overflow-x-auto scroll-px-4 px-4 [scrollbar-width:none] lg:mt-[71px] lg:scroll-px-[22px] lg:px-[22px] [&::-webkit-scrollbar]:hidden">
+      <ul className="mt-[50px] flex snap-x snap-mandatory gap-[1.3vw] overflow-x-auto scroll-px-[2.08vw] px-[2.08vw] [scrollbar-width:none] lg:mt-[71px] lg:gap-[0.69vw] lg:scroll-px-[1.53vw] lg:px-[1.53vw] [&::-webkit-scrollbar]:hidden">
         {stories.map((s) => (
-          <li key={s.user} className="w-[374px] shrink-0 snap-start">
+          <li key={s.user} className="w-[48.7vw] shrink-0 snap-start lg:w-[25.97vw]">
             <a
               href={`https://www.instagram.com/${s.user}/`}
               target="_blank"
@@ -52,7 +52,7 @@ export default function InstagramStories({ className = "" }: { className?: strin
               className="group flex flex-col gap-5"
             >
               <span className="relative block aspect-[374/664] overflow-hidden bg-[#F4F3F3]">
-                <Image src={s.src} alt={`Historia de @${s.user}`} fill sizes="374px" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" style={{ objectPosition: s.pos }} />
+                <Image src={s.src} alt={`Historia de @${s.user}`} fill sizes="(max-width: 1023px) 49vw, 26vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" style={{ objectPosition: s.pos }} />
               </span>
               <span className="flex items-center gap-[9px] text-[18px] font-medium uppercase leading-[1.4] tracking-[0.18px] text-[#2A2B2D]">
                 <Image src="/icons/instagram-color.svg" alt="" width={24} height={24} />

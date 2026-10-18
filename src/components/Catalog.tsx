@@ -128,7 +128,7 @@ export default function Catalog({
       {/* Кол-во товаров + FILTERS / SORT BY */}
       <div
         ref={gridTopRef}
-        className="mx-auto flex max-w-[1440px] scroll-mt-24 flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 sm:px-[22px]"
+        className="flex scroll-mt-24 flex-wrap items-center justify-between gap-x-6 gap-y-3 px-[3.89vw] md:px-[2.08vw] lg:px-[1.53vw]"
       >
         <p className="text-[14px] leading-[1.4] text-[#131314]" aria-live="polite">
           <span className="font-semibold">{filtered.length}</span>{" "}
@@ -274,7 +274,7 @@ export default function Catalog({
           </div>
         )}
 
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-[22px]">
+        <div className="px-[3.89vw] md:px-[2.08vw] lg:px-[1.53vw]">
           {visible.length > 0 ? (
             <div className="grid grid-cols-2 gap-x-2 gap-y-8 md:grid-cols-3 md:gap-x-3 lg:grid-cols-4 lg:gap-y-[50px]">
               {visible.map((p, i) => (

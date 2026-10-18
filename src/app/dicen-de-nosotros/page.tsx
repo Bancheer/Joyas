@@ -17,7 +17,7 @@ export default function DicenDeNosotrosPage() {
   return (
     <main className={`${metropolis.className} bg-white pb-[100px] text-[#131314] md:pb-[140px]`}>
       {/* ── Hero: фото с затемнением (чёрный 14% + синий 27%) ── */}
-      <section className="relative flex h-[545px] flex-col items-center justify-end overflow-hidden px-[14px] pb-[50px] text-center text-white md:pb-20 lg:h-[703px] lg:pb-[158px]">
+      <section className="relative flex h-[545px] flex-col items-center justify-end overflow-hidden px-[14px] pb-[50px] text-center text-white md:pb-20 lg:h-[48.82vw] lg:pb-[10.97vw]">
         <span aria-hidden className="absolute left-1/2 top-0 aspect-[1440/703] h-full min-w-full -translate-x-1/2 overflow-hidden">
           <span className="absolute left-0 top-[-87.52%] h-[273.34%] w-full">
             <Image src="/dicen/hero.png" alt="" fill priority sizes="(max-width: 1023px) 1116px, 100vw" className="object-cover" />
@@ -88,8 +88,8 @@ export default function DicenDeNosotrosPage() {
           </blockquote>
         </div>
         {/* ВРЕМЕННО: кадр из видео. Когда будет файл ролика — заменить на <video controls poster=…> */}
-        <div className="relative aspect-[644/363] w-full max-w-[333px] shrink-0 overflow-hidden bg-black md:max-w-[644px] lg:w-[644px]">
-          <Image src="/dicen/video.png" alt="Video de Perla con su tarjeta de Joyas Rodriguez" fill sizes="(max-width: 767px) 333px, 644px" className="object-cover" />
+        <div className="relative aspect-[644/363] w-[92.5vw] shrink-0 overflow-hidden bg-black md:w-[83.85vw] lg:w-[44.72vw]">
+          <Image src="/dicen/video.png" alt="Video de Perla con su tarjeta de Joyas Rodriguez" fill sizes="(max-width: 767px) 93vw, (max-width: 1023px) 84vw, 45vw" className="object-cover" />
         </div>
       </section>
 

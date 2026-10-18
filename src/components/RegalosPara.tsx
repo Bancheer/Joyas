@@ -51,9 +51,9 @@ export default function RegalosPara({
   return (
     <section
       aria-labelledby="regalos-para"
-      className={`px-[14px] md:px-[22px] ${plain ? "" : "bg-[#FAFAFA] py-20 lg:pb-[84px]"} ${className}`}
+      className={`px-[3.89vw] md:px-0 lg:px-[1.53vw] ${plain ? "" : "bg-[#FAFAFA] py-20 lg:pb-[84px]"} ${className}`}
     >
-      <div className="mx-auto max-w-[695px] lg:max-w-[1396px]">
+      <div className="mx-auto md:w-[90.5vw] lg:w-full">
         <h2
           id="regalos-para"
           className={`${nunito.className} text-[28px] font-semibold uppercase leading-[1.35] md:text-[34px]`}

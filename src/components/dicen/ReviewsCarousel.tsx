@@ -77,7 +77,7 @@ export default function ReviewsCarousel({ className = "" }: { className?: string
 
   return (
     <section aria-labelledby="resenas" className={className}>
-      <div className="flex items-center justify-between px-[14px] md:px-4 lg:px-[22px]">
+      <div className="flex items-center justify-between px-[3.89vw] md:px-[2.08vw] lg:px-[1.53vw]">
         <h2 id="resenas" className={`${nunito.className} text-[28px] font-semibold uppercase leading-[1.35] text-[#131314] md:text-[34px]`}>
           Reseñas
         </h2>
@@ -99,10 +99,10 @@ export default function ReviewsCarousel({ className = "" }: { className?: string
         ref={trackRef}
         onScroll={onScroll}
         aria-label="Reseñas de clientes"
-        className="mt-[30px] flex snap-x snap-mandatory gap-[10px] overflow-x-auto scroll-px-[14px] px-[14px] [scrollbar-width:none] md:scroll-px-4 md:px-4 lg:scroll-px-[22px] lg:px-[22px] [&::-webkit-scrollbar]:hidden"
+        className="mt-[30px] flex snap-x snap-mandatory gap-[2.78vw] overflow-x-auto scroll-px-[3.89vw] px-[3.89vw] [scrollbar-width:none] md:gap-[1.3vw] md:scroll-px-[2.08vw] md:px-[2.08vw] lg:gap-[0.69vw] lg:scroll-px-[1.53vw] lg:px-[1.53vw] [&::-webkit-scrollbar]:hidden"
       >
         {reviews.map((r) => (
-          <li key={r.name} className="flex h-[493px] w-[332px] shrink-0 snap-start flex-col rounded-[2px] bg-[#F4F5FB] md:w-[420px]">
+          <li key={r.name} className="flex w-[92.22vw] shrink-0 snap-start flex-col rounded-[2px] bg-[#F4F5FB] md:w-[54.69vw] lg:w-[29.17vw]">
             <div className="flex items-center gap-[18px] p-[22px]">
               <span className="relative size-[66px] shrink-0 overflow-hidden rounded-full bg-white">
                 <Image src={r.avatar} alt="" fill sizes="66px" className="object-cover" style={{ objectPosition: r.avatarPos }} />
@@ -115,10 +115,10 @@ export default function ReviewsCarousel({ className = "" }: { className?: string
                 </p>
               </div>
             </div>
-            <span className="relative mt-[20px] block h-[211px] w-full shrink-0 overflow-hidden">
-              <Image src={r.photo} alt="" fill sizes="420px" className="object-cover" style={{ objectPosition: r.photoPos }} />
+            <span className="relative mt-[20px] block aspect-[420/211] w-full shrink-0 overflow-hidden">
+              <Image src={r.photo} alt="" fill sizes="(max-width: 767px) 92vw, (max-width: 1023px) 55vw, 30vw" className="object-cover" style={{ objectPosition: r.photoPos }} />
             </span>
-            <p className="mt-auto px-[22px] pb-[23px] text-[14px] leading-[1.4] tracking-[0.14px] text-[#131314]">{r.text}</p>
+            <p className="mt-auto px-[22px] pb-[23px] pt-[30px] text-[14px] leading-[1.4] tracking-[0.14px] text-[#131314]">{r.text}</p>
           </li>
         ))}
       </ul>
