@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ScrollCarousel from "@/components/ScrollCarousel";
@@ -65,7 +66,8 @@ function ExperienceItem({ item }: { item: Item }) {
   );
 }
 
-export default function Experience() {
+// intro — абзац под заголовком (есть на странице «Quién somos»)
+export default function Experience({ intro }: { intro?: ReactNode }) {
   return (
     <section
       id="experiencia"
@@ -78,6 +80,11 @@ export default function Experience() {
       >
         La experiencia Joyas Rodriguez
       </h2>
+      {intro && (
+        <p className="mx-auto mt-2 max-w-[360px] px-[14px] text-center text-[12px] leading-[1.4] tracking-[0.12px] text-[#2A2B2D] md:max-w-[764px] md:px-4">
+          {intro}
+        </p>
+      )}
 
       {/* Телефон — карусель */}
       <div className="md:hidden">

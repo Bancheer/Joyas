@@ -112,6 +112,41 @@ const assets = [
   ["icons/trust-caja.svg", "https://www.figma.com/api/mcp/asset/0abe9def-9f61-4eec-8d73-870ec8d9c155.svg"],
   ["icons/trust-garantia.svg", "https://www.figma.com/api/mcp/asset/9a3a306e-f445-43c8-98d4-8728d9c74de3.svg"],
   ["icons/trust-envio.svg", "https://www.figma.com/api/mcp/asset/ee75dbbc-0616-440f-ac25-a88cfd81b47e.svg"],
+  // ── Regalos (18.10) ──
+  ["regalos/promo.png", figma("c81df125-54a6-4475-92d2-b383a71a8ea4", "f8998.png")],
+  ["icons/copy.svg", figma("c81df125-54a6-4475-92d2-b383a71a8ea4", "ad36f.svg")],
+  // ── Quién somos (18.10) ──
+  ["quien-somos/hero.png", figma("860bd314-9558-48e2-b519-1d1ed704a2a6", "c40ac.png")],
+  ["quien-somos/mision.png", figma("860bd314-9558-48e2-b519-1d1ed704a2a6", "07821.png")],
+  ["icons/logo-diamond.svg", figma("860bd314-9558-48e2-b519-1d1ed704a2a6", "85e53.svg")],
+  ["icons/mision.svg", figma("860bd314-9558-48e2-b519-1d1ed704a2a6", "ff9bf.svg")],
+  // ── Dicen de nosotros (18.10) ──
+  ["dicen/hero.png", figma("a13b3bf6-32fe-44c7-a344-1c2ec0b73c8e", "75d41.png")],
+  ["dicen/diana.png", figma("1b44e6e6-fd9a-49a6-92f0-4c44964184de", "d14b3.png")],
+  ["icons/check-circle.svg", figma("1b44e6e6-fd9a-49a6-92f0-4c44964184de", "e7447.svg")],
+  ["icons/flag-mx.svg", figma("1b44e6e6-fd9a-49a6-92f0-4c44964184de", "dfa92.svg")],
+  ["icons/arrow-long-blue.svg", figma("1b44e6e6-fd9a-49a6-92f0-4c44964184de", "3c5d4.svg")],
+  ["dicen/perla.png", figma("e5e88015-f9e9-4306-bc86-40aa415e10a1", "b7e25.png")],
+  ["dicen/video.png", figma("e5e88015-f9e9-4306-bc86-40aa415e10a1", "11d69.png")],
+  ["icons/instagram-color.svg", figma("e5e88015-f9e9-4306-bc86-40aa415e10a1", "5b320.svg")],
+  ["dicen/resena-1.png", figma("2e1f15f2-7802-4284-aa13-6d665c4f9452", "4e767.png")],
+  ["dicen/avatar-1.png", figma("2e1f15f2-7802-4284-aa13-6d665c4f9452", "6b140.png")],
+  ["dicen/resena-2.png", figma("2e1f15f2-7802-4284-aa13-6d665c4f9452", "98163.png")],
+  ["dicen/avatar-2.png", figma("2e1f15f2-7802-4284-aa13-6d665c4f9452", "36659.png")],
+  ["dicen/resena-3.png", figma("2e1f15f2-7802-4284-aa13-6d665c4f9452", "3628c.png")],
+  ["dicen/avatar-3.png", figma("2e1f15f2-7802-4284-aa13-6d665c4f9452", "65633.png")],
+  ["dicen/resena-4.png", figma("2e1f15f2-7802-4284-aa13-6d665c4f9452", "25f12.png")],
+  ["dicen/avatar-4.png", figma("2e1f15f2-7802-4284-aa13-6d665c4f9452", "47a28.png")],
+  ["dicen/story-1.png", figma("280007be-609e-4e4d-9388-c7c9a29188ee", "8d2b0.png")],
+  ["dicen/story-2.png", figma("280007be-609e-4e4d-9388-c7c9a29188ee", "0bc87.png")],
+  ["dicen/story-3.png", figma("280007be-609e-4e4d-9388-c7c9a29188ee", "2d1a3.png")],
+  ["dicen/story-4.png", figma("280007be-609e-4e4d-9388-c7c9a29188ee", "49342.png")],
+  // ── Cuidado de las joyas (18.10) ──
+  ["cuidado/hero.png", figma("67132d7d-1745-4c38-bc7e-b57c413405f2", "7a077.png")],
+  ["cuidado/como-cuidar.png", figma("67132d7d-1745-4c38-bc7e-b57c413405f2", "cc462.png")],
+  ["cuidado/consejos.png", figma("67132d7d-1745-4c38-bc7e-b57c413405f2", "8c7d8.png")],
+  ["icons/divider.svg", figma("67132d7d-1745-4c38-bc7e-b57c413405f2", "3bc18.svg")],
+  ["icons/bullet-blue.svg", figma("67132d7d-1745-4c38-bc7e-b57c413405f2", "fdbab.svg")],
 ];
 
 const exists = (p) =>
