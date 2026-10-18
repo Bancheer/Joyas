@@ -47,11 +47,11 @@ export default function InstagramSection() {
 
       {/* В макете ряд фото шире экрана и обрезан по краям: на телефоне видно два фото 200×211,
           на планшете — два 420×444, на компьютере — четыре (ряд 1710px) */}
-      <ul className="-ml-[29px] mt-[54px] flex w-[calc(100%+29px)] snap-x snap-mandatory gap-[10px] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:-ml-[138px] md:w-[calc(100%+138px)] lg:-ml-[9.375%] lg:mt-[50px] lg:grid lg:w-[118.75%] lg:grid-cols-4 lg:overflow-visible">
+      <ul className="-ml-[8.06vw] mt-[54px] flex w-[108.06vw] snap-x snap-mandatory gap-[2.78vw] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:-ml-[17.97vw] md:w-[117.97vw] md:gap-[1.3vw] lg:-ml-[9.375%] lg:mt-[50px] lg:grid lg:w-[118.75%] lg:grid-cols-4 lg:gap-[0.69vw] lg:overflow-visible">
         {photos.map((p, i) => (
           <li
             key={p.src}
-            className="relative aspect-[200/211] w-[200px] shrink-0 snap-start overflow-hidden md:aspect-[420/444] md:w-[420px] lg:w-auto"
+            className="relative aspect-[200/211] w-[55.56vw] shrink-0 snap-start overflow-hidden md:aspect-[420/444] md:w-[54.69vw] lg:w-auto"
           >
             <a
               href={INSTAGRAM_URL}
@@ -66,7 +66,7 @@ export default function InstagramSection() {
                   src={p.src}
                   alt=""
                   fill
-                  sizes="(max-width: 767px) 200px, (max-width: 1023px) 420px, 30vw"
+                  sizes="(max-width: 767px) 56vw, (max-width: 1023px) 55vw, 30vw"
                   className="object-cover transition-transform duration-700 hover:scale-[1.03]"
                   style={{ objectPosition: p.position }}
                 />

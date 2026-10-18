@@ -47,14 +47,14 @@ export default function SiteHeader() {
                   <Link href={l.href} aria-haspopup="true" className="uppercase hover:text-[#517EC1] group-hover:text-[#517EC1] group-focus-within:text-[#517EC1]">
                     {l.label}
                   </Link>
-                  <div className="invisible absolute inset-x-0 top-full h-[257px] border-t border-[#F0F3FF] bg-white opacity-0 shadow-[0_8px_16px_rgba(19,19,20,0.04)] transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                    <div className="flex gap-[60px] px-[22px] pt-[25px]">
+                  <div className="invisible absolute inset-x-0 top-full min-h-[257px] border-t border-[#F0F3FF] bg-white opacity-0 shadow-[0_8px_16px_rgba(19,19,20,0.04)] transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    <div className="flex gap-[60px] px-[22px] pb-[30px] pt-[25px]">
                       {JOYAS_MENU.map((col) => (
-                        <div key={col.title} className="flex w-[148px] flex-col gap-[18px]">
+                        <div key={col.title} className="flex w-[148px] shrink-0 flex-col gap-[18px]">
                           <Link href={col.href} className="text-[16px] uppercase tracking-[0.16px] hover:text-[#517EC1]">
                             {col.title}
                           </Link>
-                          <ul className="flex flex-col gap-2 text-[12px] tracking-[0.12px]">
+                          <ul className="flex flex-col gap-2 text-[12px] leading-[1.3] tracking-[0.12px]">
                             {col.items.map((item) => (
                               <li key={item}>
                                 <Link href={joyasMenuHref(col.href, item)} className="hover:text-[#517EC1]">
@@ -101,15 +101,16 @@ export default function SiteHeader() {
                 </a>
               ))}
             </nav>
+            {/* Иконки окрашиваются через mask, поэтому при наведении синеют, как пункты меню */}
             <div className="flex items-center gap-[14px] md:gap-4">
-              <button type="button" aria-label="Cuenta" className="hover:opacity-70">
-                <Image src="/icons/user.svg" alt="" width={24} height={24} />
+              <button type="button" aria-label="Cuenta" className="text-[#131314] transition-colors hover:text-[#517EC1]">
+                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/user.svg)_center/contain_no-repeat] [mask:url(/icons/user.svg)_center/contain_no-repeat]" />
               </button>
-              <button type="button" aria-label="Buscar" className="hidden hover:opacity-70 md:block">
-                <Image src="/icons/search.svg" alt="" width={24} height={24} />
+              <button type="button" aria-label="Buscar" className="hidden text-[#131314] transition-colors hover:text-[#517EC1] md:block">
+                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/search.svg)_center/contain_no-repeat] [mask:url(/icons/search.svg)_center/contain_no-repeat]" />
               </button>
-              <button type="button" aria-label="Carrito" className="hover:opacity-70">
-                <Image src="/icons/bag.svg" alt="" width={24} height={24} />
+              <button type="button" aria-label="Carrito" className="text-[#131314] transition-colors hover:text-[#517EC1]">
+                <span aria-hidden className="block size-6 bg-current [-webkit-mask:url(/icons/bag.svg)_center/contain_no-repeat] [mask:url(/icons/bag.svg)_center/contain_no-repeat]" />
               </button>
             </div>
           </div>

@@ -39,7 +39,7 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <main className={`${metropolis.className} bg-white text-[#131314]`}>
-      <div className="mx-auto grid max-w-[1440px] gap-8 px-4 pb-16 sm:px-[22px] lg:grid-cols-[minmax(0,882px)_400px] lg:gap-[68px] lg:pb-[140px]">
+      <div className="grid gap-8 pb-16 sm:px-[2.08vw] lg:grid-cols-[minmax(0,61.25fr)_minmax(0,27.78fr)] lg:gap-[4.72vw] lg:px-[1.53vw] lg:pb-[140px]">
         {/* ── Галерея: на телефоне листается свайпом, на компьютере сетка 2×4 ── */}
         <section aria-label="Fotos del producto" className="-mx-4 sm:mx-0">
           <ul className="flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 sm:px-0 lg:grid lg:grid-cols-2 lg:gap-[14px] lg:overflow-visible">

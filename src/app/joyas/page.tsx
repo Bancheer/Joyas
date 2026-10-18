@@ -43,8 +43,8 @@ export default function JoyasPage() {
       <CategoryStories />
 
       {/* Más vendidos / Novedades: 1 колонка до 1024px, 2 — на компьютере */}
-      <section className="px-[14px] md:px-[15px] md:pt-6 lg:px-[22px] lg:pt-0">
-        <div className="mx-auto grid max-w-[1396px] gap-2 lg:grid-cols-2">
+      <section className="px-[3.89vw] md:px-[1.95vw] md:pt-6 lg:px-[1.53vw] lg:pt-0">
+        <div className="grid gap-2 lg:grid-cols-2">
           {featured.map((item) => (
             <Link
               key={item.label}
@@ -79,7 +79,7 @@ export default function JoyasPage() {
       {/* Категории */}
       <section
         aria-label="Categorías"
-        className="px-[14px] pt-20 md:px-[22px] md:pt-[100px]"
+        className="px-[3.89vw] pt-20 md:px-0 md:pt-[100px] lg:px-[1.53vw]"
       >
         <CategoryCards />
       </section>

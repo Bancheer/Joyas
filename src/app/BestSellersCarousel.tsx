@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { nunito } from "./fonts";
 
 const products = [
@@ -43,35 +43,21 @@ export default function BestSellersCarousel({
   fontClassName: string;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [canGoBack, setCanGoBack] = useState(false);
-  const [canGoForward, setCanGoForward] = useState(true);
-
-  const updateArrows = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    setCanGoBack(track.scrollLeft > 1);
-    setCanGoForward(
-      track.scrollLeft < track.scrollWidth - track.clientWidth - 1,
-    );
-  }, []);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const observer = new ResizeObserver(updateArrows);
-    observer.observe(track);
-    updateArrows();
-
-    return () => observer.disconnect();
-  }, [updateArrows]);
-
   const scrollProducts = (direction: -1 | 1) => {
     const track = trackRef.current;
     const card = track?.querySelector<HTMLElement>("[data-product-card]");
     if (!track || !card) return;
 
+    // По кругу: с последней карточки «вперёд» — в начало, с первой «назад» — в конец
+    const max = track.scrollWidth - track.clientWidth;
+    if (direction === 1 && track.scrollLeft >= max - 2) {
+      track.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+    if (direction === -1 && track.scrollLeft <= 2) {
+      track.scrollTo({ left: max, behavior: "smooth" });
+      return;
+    }
     const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
     track.scrollBy({
       left: direction * (card.getBoundingClientRect().width + gap),
@@ -84,7 +70,7 @@ export default function BestSellersCarousel({
       id="best-sellers"
       className="mt-[100px] w-full bg-white md:mt-[140px]"
     >
-      <div className="mb-[30px] flex items-end justify-between px-[14px] md:px-4 lg:px-[22px]">
+      <div className="mb-[30px] flex items-end justify-between px-[3.89vw] md:px-[2.08vw] lg:px-[1.53vw]">
         <div>
           <h2
             className={`${nunito.className} text-[28px] font-semibold uppercase leading-[1.35] text-[#131314] md:text-[34px]`}
@@ -103,9 +89,8 @@ export default function BestSellersCarousel({
           <button
             type="button"
             aria-label="Ver productos anteriores"
-            disabled={!canGoBack}
-            onClick={() => scrollProducts(-1)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#517EC1] text-[#517EC1] transition-colors hover:bg-[#517EC1] hover:text-white disabled:cursor-not-allowed disabled:border-slate-200 disabled:text-slate-300 disabled:hover:bg-transparent disabled:hover:text-slate-300"
+                        onClick={() => scrollProducts(-1)}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#517EC1] text-[#517EC1] transition-colors hover:bg-[#517EC1] hover:text-white"
           >
             <svg
               aria-hidden="true"
@@ -124,9 +109,8 @@ export default function BestSellersCarousel({
           <button
             type="button"
             aria-label="Ver siguientes productos"
-            disabled={!canGoForward}
-            onClick={() => scrollProducts(1)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#517EC1] text-[#517EC1] transition-colors hover:bg-[#517EC1] hover:text-white disabled:cursor-not-allowed disabled:border-slate-200 disabled:text-slate-300 disabled:hover:bg-transparent disabled:hover:text-slate-300"
+                        onClick={() => scrollProducts(1)}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#517EC1] text-[#517EC1] transition-colors hover:bg-[#517EC1] hover:text-white"
           >
             <svg
               aria-hidden="true"
@@ -150,21 +134,20 @@ export default function BestSellersCarousel({
         aria-roledescription="carrusel"
         aria-label="Productos más vendidos"
         tabIndex={0}
-        onScroll={updateArrows}
-        className="flex snap-x snap-mandatory gap-[10px] overflow-x-auto scroll-smooth scroll-pl-[14px] px-[14px] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:scroll-pl-4 md:px-4 lg:gap-[1.5vw] lg:scroll-pl-[22px] lg:px-[22px]"
+        className="flex snap-x snap-mandatory gap-[2.78vw] overflow-x-auto scroll-pl-[3.89vw] px-[3.89vw] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-[1.3vw] md:scroll-pl-[2.08vw] md:px-[2.08vw] lg:gap-[1.5vw] lg:scroll-pl-[1.53vw] lg:px-[1.53vw]"
       >
         {products.map((product) => (
           <article
             key={product.name}
             data-product-card
-            className="w-[294px] min-w-0 shrink-0 snap-start md:w-[420px] lg:w-[29vw]"
+            className="w-[81.67vw] min-w-0 shrink-0 snap-start md:w-[54.69vw] lg:w-[29vw]"
           >
             <div className="relative grid aspect-[420/520] w-full place-items-center overflow-hidden bg-[#FBFAFB]">
               <Image
                 src={product.src}
                 alt={product.name}
                 fill
-                sizes="(max-width: 767px) 294px, (max-width: 1023px) 420px, 29vw"
+                sizes="(max-width: 767px) 82vw, (max-width: 1023px) 55vw, 29vw"
                 className="object-cover object-center"
               />
               <span

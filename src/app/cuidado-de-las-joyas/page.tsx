@@ -31,7 +31,7 @@ export default function CuidadoPage() {
   return (
     <main className={`${metropolis.className} bg-white pb-[100px] text-[#2A2B2D] md:pb-[140px]`}>
       {/* ── Hero: фото + затемнение (чёрный 32% + синий 37%); на компьютере справа серая полоса ── */}
-      <section className="relative flex h-[317px] items-end justify-center overflow-hidden bg-[#F7F7F7] pb-5 md:h-[452px] md:pb-9 lg:h-[583px] lg:pb-[81px]">
+      <section className="relative flex h-[317px] items-end justify-center overflow-hidden bg-[#F7F7F7] pb-5 md:h-[452px] md:pb-9 lg:h-[40.49vw] lg:pb-[5.63vw]">
         <span aria-hidden className="absolute left-1/2 top-0 aspect-[1080/583] h-full -translate-x-1/2 overflow-hidden lg:left-0 lg:translate-x-0">
           <span className="absolute left-0 top-[-18.52%] h-[185.25%] w-full">
             <Image src="/cuidado/hero.png" alt="" fill priority sizes="(max-width: 1023px) 840px, 75vw" className="object-cover" />
@@ -63,7 +63,7 @@ export default function CuidadoPage() {
 
       {/* ── Cómo cuidar tus joyas: фото слева / сверху ── */}
       <section className="mt-[100px] flex flex-col items-center gap-[78px] bg-[#F4F5FB] pb-[78px] lg:flex-row lg:pb-0">
-        <div className="relative aspect-square w-full shrink-0 lg:w-1/2 lg:max-w-[720px]">
+        <div className="relative aspect-square w-full shrink-0 lg:w-1/2">
           <Image src="/cuidado/como-cuidar.png" alt="Mano con anillo de plata y piedra azul" fill sizes="(max-width: 1023px) 100vw, 50vw" className="object-cover" />
         </div>
         <div className="flex flex-col items-center gap-[34px] px-[14px] md:px-4 lg:px-0">
@@ -103,7 +103,7 @@ export default function CuidadoPage() {
             </li>
           </ul>
         </div>
-        <div className="relative aspect-square w-full shrink-0 lg:aspect-[720/721] lg:w-1/2 lg:max-w-[720px]">
+        <div className="relative aspect-square w-full shrink-0 lg:aspect-[720/721] lg:w-1/2">
           <Image src="/cuidado/consejos.png" alt="Mujer con anillo Girasol" fill sizes="(max-width: 1023px) 100vw, 50vw" className="object-cover" />
         </div>
       </section>

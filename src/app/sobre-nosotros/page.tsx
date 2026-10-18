@@ -24,7 +24,7 @@ export default function QuienSomosPage() {
   return (
     <main className={`${metropolis.className} bg-white text-[#131314]`}>
       {/* ── Hero: фото с затемнением (чёрный 25% + синий 27%) ── */}
-      <section className="relative h-[433px] overflow-hidden px-[14px] text-center text-white md:h-[526px] lg:h-[703px]">
+      <section className="relative h-[433px] overflow-hidden px-[14px] text-center text-white md:h-[526px] lg:h-[48.82vw]">
         {/* Рамка фото в макете чуть шире экрана (2.05:1) и центрирована */}
         <span aria-hidden className="absolute left-1/2 top-0 aspect-[1443/703] h-full min-w-full -translate-x-1/2 overflow-hidden">
           <span className="absolute left-0 top-[-101.41%] h-[273.64%] w-full">
@@ -33,7 +33,7 @@ export default function QuienSomosPage() {
           <span className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),linear-gradient(rgba(81,126,193,0.27),rgba(81,126,193,0.27))]" />
         </span>
 
-        <div className="relative mx-auto flex max-w-[785px] flex-col items-center gap-[26px] pt-[104px] md:pt-[152px] lg:pt-[394px]">
+        <div className="relative mx-auto flex max-w-[785px] flex-col items-center gap-[26px] pt-[104px] md:pt-[152px] lg:pt-[27.36vw]">
           <h1 className={`${parisienne.className} max-w-[332px] text-[46px] leading-[1.1] md:max-w-[765px] md:text-[70px] lg:max-w-none lg:whitespace-nowrap`}>
             Cada joya tiene su propia historia.
           </h1>
@@ -85,7 +85,7 @@ export default function QuienSomosPage() {
 
       {/* ── Nuestra misión ── */}
       <section className="mt-[130px] flex flex-col items-center gap-[50px] px-[14px] md:mt-[140px] md:gap-[104px] md:px-0 lg:flex-row lg:pr-[104px]">
-        <div className="relative aspect-square w-full shrink-0 lg:w-1/2 lg:max-w-[720px]">
+        <div className="relative aspect-square w-full shrink-0 lg:w-1/2">
           <Image src="/quien-somos/mision.png" alt="Anillo de plata en la Caja Azul de Joyas Rodriguez" fill sizes="(max-width: 1023px) 100vw, 50vw" className="object-cover" />
         </div>
         <div className="flex flex-1 flex-col items-center gap-9 text-center">
@@ -127,7 +127,7 @@ export default function QuienSomosPage() {
       />
 
       {/* ── Muestra colección de Joyas Exclusivas ── */}
-      <section aria-labelledby="exclusivas" className="mt-[100px] px-[14px] md:mt-[140px] md:px-[22px]">
+      <section aria-labelledby="exclusivas" className="mt-[100px] px-[3.89vw] md:mt-[140px] md:px-0 lg:px-[1.53vw]">
         <header className="mx-auto mb-[50px] flex max-w-[512px] flex-col items-center gap-2 text-center">
           <h2 id="exclusivas" className={`${parisienne.className} text-[44px] leading-[1.1] md:text-[54px] md:leading-normal`}>
             Muestra colección de Joyas Exclusivas
