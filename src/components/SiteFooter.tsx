@@ -5,10 +5,10 @@ import { metropolis } from "@/app/fonts";
 const helpLinks = [
   { label: "Seguimiento", href: "#seguimiento" },
   { label: "Preguntas frecuentes", href: "#faq" },
-  { label: "Mantenimiento de la plata", href: "#mantenimiento" },
-  { label: "Referencias", href: "#referencias" },
+  { label: "Mantenimiento de la plata", href: "/cuidado-de-las-joyas" },
+  { label: "Referencias", href: "/dicen-de-nosotros" },
   { label: "Contactos", href: "#contactos" },
-  { label: "¿Quién Somos?", href: "/#sobre-nosotros" },
+  { label: "¿Quién Somos?", href: "/sobre-nosotros" },
 ];
 
 const policyLinks = [
