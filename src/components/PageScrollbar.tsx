@@ -4,9 +4,9 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 
 // Бегунок прокрутки страницы в цветах бренда.
 // Обычная полоса прокрутки скрыта (globals.css), поэтому показываем свой бегунок справа:
-// на компьютере виден всегда, на сенсорных экранах появляется при прокрутке и прячется через секунду.
+// на планшете и компьютере виден всегда (дорожка + бегунок), на телефоне — тонкий индикатор при прокрутке.
 // Мышью его можно тянуть, клик по дорожке листает на экран вверх/вниз.
-// На сенсорных экранах — тонкий индикатор без перетаскивания (листают пальцем).
+// Тянуть можно мышью, пальцем или пером; на телефоне (<768px) индикатор не перехватывает касания.
 const MARGIN = 4; // отступ дорожки от верха и низа окна
 const MIN_THUMB = 40;
 
@@ -72,7 +72,6 @@ export default function PageScrollbar() {
   }, []);
 
   const onThumbDown = (e: PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "mouse") return;
     e.preventDefault();
     e.stopPropagation();
     e.currentTarget.setPointerCapture(e.pointerId);
@@ -98,7 +97,6 @@ export default function PageScrollbar() {
 
   // Клик по дорожке выше/ниже бегунка — прокрутка на экран
   const onTrackDown = (e: PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "mouse") return;
     const dir = e.clientY < thumb.top ? -1 : 1;
     window.scrollBy({ top: dir * window.innerHeight * 0.9, behavior: "smooth" });
   };
@@ -117,7 +115,7 @@ export default function PageScrollbar() {
         hovered.current = false;
         scheduleHide();
       }}
-      className="group fixed inset-y-0 right-0 z-[70] w-[14px] transition-colors hover:bg-[#F4F5FB]/80 pointer-coarse:pointer-events-none"
+      className="group fixed inset-y-0 right-0 z-[70] w-[14px] max-md:pointer-events-none md:bg-[#F0F2FF]/90"
     >
       <div
         onPointerDown={onThumbDown}
@@ -125,11 +123,9 @@ export default function PageScrollbar() {
         onPointerUp={onThumbUp}
         onPointerCancel={onThumbUp}
         style={{ top: thumb.top, height: thumb.height }}
-        className={`absolute right-[3px] rounded-full transition-[opacity,width,background-color] duration-300 motion-reduce:transition-none pointer-coarse:right-[2px] pointer-coarse:w-[3px] ${
-          dragging
-            ? "w-[8px] cursor-grabbing bg-[#517EC1]"
-            : "w-[6px] cursor-grab bg-[#B7BEE2] group-hover:w-[8px] group-hover:bg-[#517EC1]"
-        } ${active || dragging ? "opacity-100" : "opacity-0 pointer-fine:opacity-100"}`}
+        className={`absolute right-[3px] w-[8px] touch-none rounded-full transition-[opacity,background-color] duration-300 motion-reduce:transition-none max-md:right-[2px] max-md:w-[3px] ${
+          dragging ? "cursor-grabbing bg-[#517EC1]" : "cursor-grab bg-[#8C98D4] group-hover:bg-[#517EC1]"
+        } ${active || dragging ? "opacity-100" : "opacity-0 md:opacity-100"}`}
       />
     </div>
   );

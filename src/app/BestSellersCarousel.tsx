@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { nunito } from "./fonts";
 
 const products = [
@@ -43,26 +43,39 @@ export default function BestSellersCarousel({
   fontClassName: string;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  // Активность стрелок: «назад» выключена в начале, «вперёд» — в конце
+  const updateArrows = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    setAtStart(track.scrollLeft <= 2);
+    setAtEnd(track.scrollLeft >= track.scrollWidth - track.clientWidth - 2);
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const observer = new ResizeObserver(updateArrows);
+    observer.observe(track);
+    updateArrows();
+    return () => observer.disconnect();
+  }, [updateArrows]);
+
+  // Листаем на одну карточку: ищем текущую первую видимую и прокручиваем
+  // точно к началу соседней (с учётом отступа трека) — так прокрутка не спорит с привязкой.
   const scrollProducts = (direction: -1 | 1) => {
     const track = trackRef.current;
-    const card = track?.querySelector<HTMLElement>("[data-product-card]");
-    if (!track || !card) return;
-
-    // По кругу: с последней карточки «вперёд» — в начало, с первой «назад» — в конец
+    if (!track) return;
+    const cards = Array.from(track.querySelectorAll<HTMLElement>("[data-product-card]")) as HTMLElement[];
+    if (!cards.length) return;
+    const padding = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    const positions = cards.map((c) => c.offsetLeft - padding);
+    const current = positions.findIndex((p) => p >= track.scrollLeft - 2);
+    const index = Math.max(0, Math.min(cards.length - 1, (current === -1 ? cards.length - 1 : current) + direction));
     const max = track.scrollWidth - track.clientWidth;
-    if (direction === 1 && track.scrollLeft >= max - 2) {
-      track.scrollTo({ left: 0, behavior: "smooth" });
-      return;
-    }
-    if (direction === -1 && track.scrollLeft <= 2) {
-      track.scrollTo({ left: max, behavior: "smooth" });
-      return;
-    }
-    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-    track.scrollBy({
-      left: direction * (card.getBoundingClientRect().width + gap),
-      behavior: "smooth",
-    });
+    track.scrollTo({ left: Math.min(max, Math.max(0, positions[index])), behavior: "smooth" });
   };
 
   return (
@@ -89,8 +102,9 @@ export default function BestSellersCarousel({
           <button
             type="button"
             aria-label="Ver productos anteriores"
+            disabled={atStart}
                         onClick={() => scrollProducts(-1)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#517EC1] text-[#517EC1] transition-colors hover:bg-[#517EC1] hover:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#517EC1] text-[#517EC1] transition-colors hover:bg-[#517EC1] hover:text-white disabled:cursor-default disabled:border-[#DCDDE3] disabled:text-[#B7BEE2] disabled:hover:bg-transparent disabled:hover:text-[#B7BEE2]"
           >
             <svg
               aria-hidden="true"
@@ -109,8 +123,9 @@ export default function BestSellersCarousel({
           <button
             type="button"
             aria-label="Ver siguientes productos"
+            disabled={atEnd}
                         onClick={() => scrollProducts(1)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#517EC1] text-[#517EC1] transition-colors hover:bg-[#517EC1] hover:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#517EC1] text-[#517EC1] transition-colors hover:bg-[#517EC1] hover:text-white disabled:cursor-default disabled:border-[#DCDDE3] disabled:text-[#B7BEE2] disabled:hover:bg-transparent disabled:hover:text-[#B7BEE2]"
           >
             <svg
               aria-hidden="true"
@@ -130,11 +145,12 @@ export default function BestSellersCarousel({
 
       <div
         ref={trackRef}
+        onScroll={updateArrows}
         role="region"
         aria-roledescription="carrusel"
         aria-label="Productos más vendidos"
         tabIndex={0}
-        className="flex snap-x snap-mandatory gap-[2.78vw] overflow-x-auto scroll-pl-[3.89vw] px-[3.89vw] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-[1.3vw] md:scroll-pl-[2.08vw] md:px-[2.08vw] lg:gap-[1.5vw] lg:scroll-pl-[1.53vw] lg:px-[1.53vw]"
+        className="relative flex snap-x snap-mandatory gap-[2.78vw] overflow-x-auto scroll-pl-[3.89vw] px-[3.89vw] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-[1.3vw] md:scroll-pl-[2.08vw] md:px-[2.08vw] lg:gap-[1.5vw] lg:scroll-pl-[1.53vw] lg:px-[1.53vw]"
       >
         {products.map((product) => (
           <article
