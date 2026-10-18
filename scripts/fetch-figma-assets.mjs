@@ -114,6 +114,8 @@ const assets = [
   ["icons/trust-envio.svg", "https://www.figma.com/api/mcp/asset/ee75dbbc-0616-440f-ac25-a88cfd81b47e.svg"],
   // ── Regalos (18.10) ──
   // Оригинал фото баннера в полном разрешении (4096×1367). Старый promo.png был уменьшенной копией 1024×342.
+  // Оригинал фото первого блока главной для планшета (2283×1080). Старый hero-tablet.png был копией 1024×485.
+  ["assets/hero-tablet-hd.png", "https://www.figma.com/api/mcp/asset/96db7ce8-be73-4e31-b15d-085e97a7bb13"],
   ["regalos/promo-hd.png", "https://www.figma.com/api/mcp/asset/1dc75013-77af-403b-b962-57ebc5720b2c"],
   ["icons/copy.svg", figma("c81df125-54a6-4475-92d2-b383a71a8ea4", "ad36f.svg")],
   // ── Quién somos (18.10) ──

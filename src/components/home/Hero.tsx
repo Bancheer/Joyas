@@ -54,7 +54,7 @@ export default function Hero() {
              вместе с шириной экрана, а не сжимаются и не обрезаются ── */}
       <div className="relative hidden aspect-[768/590] md:block lg:hidden">
         <Image
-          src="/assets/hero-tablet.png"
+          src="/assets/hero-tablet-hd.png"
           alt="Dos amigas con una caja de Joyas Rodriguez"
           fill
           priority
