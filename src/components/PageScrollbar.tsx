@@ -115,7 +115,7 @@ export default function PageScrollbar() {
         hovered.current = false;
         scheduleHide();
       }}
-      className="group fixed inset-y-0 right-0 z-[70] w-[14px] max-md:pointer-events-none md:bg-[#F0F2FF]/90"
+      className="group fixed inset-y-0 right-0 z-[70] w-[16px] max-md:pointer-events-none md:bg-[#E6E9F7]"
     >
       <div
         onPointerDown={onThumbDown}
@@ -123,8 +123,8 @@ export default function PageScrollbar() {
         onPointerUp={onThumbUp}
         onPointerCancel={onThumbUp}
         style={{ top: thumb.top, height: thumb.height }}
-        className={`absolute right-[3px] w-[8px] touch-none rounded-full transition-[opacity,background-color] duration-300 motion-reduce:transition-none max-md:right-[2px] max-md:w-[3px] ${
-          dragging ? "cursor-grabbing bg-[#517EC1]" : "cursor-grab bg-[#8C98D4] group-hover:bg-[#517EC1]"
+        className={`absolute right-[3px] w-[10px] touch-none rounded-full transition-[opacity,background-color] duration-300 motion-reduce:transition-none max-md:right-[2px] max-md:w-[3px] ${
+          dragging ? "cursor-grabbing bg-[#517EC1]" : "cursor-grab bg-[#7F98D6] group-hover:bg-[#517EC1]"
         } ${active || dragging ? "opacity-100" : "opacity-0 md:opacity-100"}`}
       />
     </div>
