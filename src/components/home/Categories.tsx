@@ -3,6 +3,8 @@ import Link from "next/link";
 import { metropolis, nunito } from "@/app/fonts";
 
 // «Descubre y compra por categorías». 2×2 на телефоне и планшете, 4 в ряд на компьютере.
+// Отступы по краям в vw (14 из 360, 16 из 768, 22 из 1440) — сетка растягивается
+// от края до края и не меняется относительно экрана при масштабировании.
 // Макеты: 360 — 298:1455, 768 — 312:4897, 1440 — categories.
 const categories = [
   { name: "Anillos", href: "/joyas/anillos", image: "/categories/anillos.jpg", alt: "Anillo de plata en una mano" },
@@ -16,7 +18,7 @@ export default function Categories() {
     <section
       id="categorias"
       aria-labelledby="categorias-title"
-      className={`${metropolis.className} px-[14px] py-[100px] md:px-4 md:py-[140px] lg:px-[22px]`}
+      className={`${metropolis.className} px-[3.89vw] py-[100px] md:px-[2.15vw] md:py-[140px] lg:px-[1.56vw]`}
     >
       <header className="mx-auto flex max-w-[886px] flex-col gap-2 text-center">
         <h2
@@ -30,7 +32,7 @@ export default function Categories() {
         </p>
       </header>
 
-      <ul className="mx-auto mt-[30px] grid max-w-[735px] grid-cols-2 gap-x-1 gap-y-[18px] md:mt-[50px] md:gap-x-[5px] lg:max-w-[1395px] lg:grid-cols-4">
+      <ul className="mt-[30px] grid grid-cols-2 gap-x-[1.11vw] gap-y-[18px] md:mt-[50px] md:gap-x-[0.65vw] md:gap-y-[2.34vw] lg:grid-cols-4 lg:gap-x-[0.35vw]">
         {categories.map((c) => (
           <li key={c.name}>
             <Link href={c.href} className="group flex flex-col items-center gap-[6px]">

@@ -50,40 +50,62 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Планшет и компьютер ── */}
-      <div className="relative hidden h-[590px] md:block">
+      {/* ── Планшет: блок 768×590 из макета, всё в vw — фото и текст масштабируются
+             вместе с шириной экрана, а не сжимаются и не обрезаются ── */}
+      <div className="relative hidden aspect-[768/590] md:block lg:hidden">
         <Image
           src="/assets/hero-tablet.png"
           alt="Dos amigas con una caja de Joyas Rodriguez"
           fill
           priority
-          sizes="(max-width: 1023px) 100vw, 1px"
-          className="object-cover object-[70%_100%] lg:hidden"
+          sizes="(min-width: 768px) and (max-width: 1023px) 160vw, 1px"
+          className="object-cover object-[70%_100%]"
         />
+        <div className="absolute left-[2.08vw] top-[15.63vw]">
+          <p aria-hidden className={`${parisienne.className} whitespace-nowrap text-[8.85vw] leading-[1.2]`}>
+            Cada Joya cuenta
+          </p>
+          <p
+            aria-hidden
+            className={`${parisienne.className} -mt-[2.73vw] ml-[0.65vw] whitespace-nowrap text-[8.85vw] leading-[1.2]`}
+          >
+            una historia
+          </p>
+          <h1 className="sr-only">Cada Joya cuenta una historia</h1>
+          <p className="mt-[1.04vw] w-[46.22vw] text-[1.82vw] leading-[1.4] tracking-[0.02vw]">{text}</p>
+          <Link
+            href="/joyas"
+            className="mt-[8.33vw] inline-flex items-center justify-center border border-white px-[3.39vw] py-[1.82vw] text-[1.82vw] font-medium uppercase leading-none tracking-[0.02vw] text-white transition-colors hover:bg-white hover:text-[#517EC1]"
+          >
+            Shop collection
+          </Link>
+        </div>
+      </div>
+
+      {/* ── Компьютер ── */}
+      <div className="relative hidden h-[590px] lg:block">
         <Image
           src="/assets/hero.png"
           alt="Dos amigas con una caja de Joyas Rodriguez"
           fill
           priority
           sizes="(min-width: 1024px) 100vw, 1px"
-          className="hidden object-cover lg:block"
+          className="object-cover"
         />
 
-        <div className="absolute left-4 top-[120px] lg:left-20">
+        <div className="absolute left-20 top-[120px]">
           <p aria-hidden className={`${parisienne.className} whitespace-nowrap text-[68px] leading-[1.2]`}>
             Cada Joya cuenta
           </p>
           <p
             aria-hidden
-            className={`${parisienne.className} -mt-[21px] ml-[5px] whitespace-nowrap text-[68px] leading-[1.2] lg:ml-[225px]`}
+            className={`${parisienne.className} -mt-[21px] ml-[225px] whitespace-nowrap text-[68px] leading-[1.2]`}
           >
             una historia
           </p>
           <h1 className="sr-only">Cada Joya cuenta una historia</h1>
-          <p className="mt-[8px] w-[355px] text-[14px] leading-[1.4] tracking-[0.14px] lg:w-[510px]">
-            {text}
-          </p>
-          <div className="mt-16 lg:mt-9 lg:ml-[321px]">{button}</div>
+          <p className="mt-[8px] w-[510px] text-[14px] leading-[1.4] tracking-[0.14px]">{text}</p>
+          <div className="ml-[321px] mt-9">{button}</div>
         </div>
       </div>
     </section>
