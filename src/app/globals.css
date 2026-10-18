@@ -33,16 +33,25 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Полоса прокрутки страницы — системная (работает всегда, даже без JS), в цветах бренда */
 html {
-  /* Firefox */
-  scrollbar-width: none;
-  /* Старый Edge/IE */
-  -ms-overflow-style: none;
+  scrollbar-color: #517EC1 #E6E9F7; /* бегунок / дорожка: Chrome, Edge, Firefox */
 }
 html::-webkit-scrollbar {
-  /* Chrome/Edge/Safari */
-  width: 0;
-  height: 0;
+  /* Safari */
+  width: 12px;
+}
+html::-webkit-scrollbar-track {
+  background: #E6E9F7;
+}
+html::-webkit-scrollbar-thumb {
+  background: #517EC1;
+  border-radius: 6px;
+  border: 2px solid #E6E9F7;
+}
+/* Блоки шириной 100vw чуть шире области с полосой прокрутки — не даём им вызвать горизонтальную прокрутку */
+body {
+  overflow-x: clip;
 }
 
 .story-image {

@@ -42,12 +42,13 @@ export default function SiteHeader() {
           <nav aria-label="Menú principal" className="hidden h-full items-center gap-[38px] text-[12px] lg:flex">
             {NAV_LINKS.map((l) =>
               l.href === "/joyas" ? (
-                // «Joyas» раскрывает меню по наведению и с клавиатуры (focus-within)
+                // «Joyas» раскрывает меню по наведению и с клавиатуры (Tab). Фокус после клика мышью
+                // не считается (:focus-visible), иначе меню оставалось открытым после перехода по ссылке
                 <div key={l.href} className="group flex h-full items-center">
-                  <Link href={l.href} aria-haspopup="true" className="uppercase hover:text-[#517EC1] group-hover:text-[#517EC1] group-focus-within:text-[#517EC1]">
+                  <Link href={l.href} aria-haspopup="true" className="uppercase hover:text-[#517EC1] group-hover:text-[#517EC1] group-has-[:focus-visible]:text-[#517EC1]">
                     {l.label}
                   </Link>
-                  <div className="invisible absolute inset-x-0 top-full min-h-[257px] border-t border-[#F0F3FF] bg-white opacity-0 shadow-[0_8px_16px_rgba(19,19,20,0.04)] transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <div className="invisible absolute inset-x-0 top-full min-h-[257px] border-t border-[#F0F3FF] bg-white opacity-0 shadow-[0_8px_16px_rgba(19,19,20,0.04)] transition-opacity group-has-[:focus-visible]:visible group-has-[:focus-visible]:opacity-100 group-hover:visible group-hover:opacity-100">
                     <div className="flex gap-[60px] px-[22px] pb-[30px] pt-[25px]">
                       {JOYAS_MENU.map((col) => (
                         <div key={col.title} className="flex w-[148px] shrink-0 flex-col gap-[18px]">
