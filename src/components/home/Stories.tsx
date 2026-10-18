@@ -4,7 +4,8 @@ import ScrollCarousel from "@/components/ScrollCarousel";
 import { metropolis, nunito } from "@/app/fonts";
 
 // «Historias». Телефон: горизонтальные карточки столбиком (298:1242),
-// планшет: карусель вертикальных карточек 404×707 (312:4686), компьютер: 3 в ряд.
+// планшет: карусель вертикальных карточек (312:4686), компьютер: 3 в ряд.
+// Ширины и отступы в vw (404 из 768 / 404 из 1440) — карточки привязаны к краям экрана.
 const stories = [
   {
     title: "Amor Propio",
@@ -68,7 +69,7 @@ export default function Stories() {
       </header>
 
       {/* Телефон */}
-      <ul className="mt-[30px] flex flex-col gap-[18px] px-[14px] md:hidden">
+      <ul className="mt-[30px] flex flex-col gap-[18px] px-[3.89vw] md:hidden">
         {stories.map((s) => (
           <li key={s.title} className="flex gap-[10px] border border-[#E9EEF5] bg-white p-[9px]">
             <span className="relative h-[156px] w-[117px] shrink-0 overflow-hidden">
@@ -93,14 +94,14 @@ export default function Stories() {
       <div className="hidden md:block">
         <ScrollCarousel
           label="Historias"
-          trackClassName="mt-10 flex gap-10 scroll-px-4 px-4 lg:mx-auto lg:grid lg:max-w-[1292px] lg:grid-cols-3 lg:overflow-visible lg:px-0"
-          itemClassName="w-[404px] lg:w-auto"
+          trackClassName="mt-10 flex gap-[5.21vw] scroll-px-[2.08vw] px-[2.08vw] lg:grid lg:grid-cols-3 lg:gap-[2.78vw] lg:overflow-visible lg:px-[5.14vw]"
+          itemClassName="w-[52.6vw] lg:w-auto"
           dotsClassName="hidden"
         >
           {stories.map((s) => (
-            <article key={s.title} className="h-full border border-[#E9EEF5] bg-white p-[19px]">
+            <article key={s.title} className="h-full border border-[#E9EEF5] bg-white p-[2.47vw] lg:p-[1.32vw]">
               <span className="relative block aspect-[364/486] overflow-hidden">
-                <Image src={s.image} alt={s.alt} fill sizes="364px" className="object-cover" />
+                <Image src={s.image} alt={s.alt} fill sizes="(max-width: 1023px) 48vw, 26vw" className="object-cover" />
               </span>
               <h3 className="mt-5 text-[18px] font-medium leading-[1.4] tracking-[0.18px] text-[#131314]">
                 {s.title}

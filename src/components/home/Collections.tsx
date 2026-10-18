@@ -4,8 +4,10 @@ import ScrollCarousel from "@/components/ScrollCarousel";
 import { metropolis, nunito } from "@/app/fonts";
 
 // «Elige la joya perfecta…» — коллекции.
-// Телефон и планшет: карусель со свайпом и точками (карточки 294×347 / 449×530),
-// компьютер: 3 карточки в ряд. Макеты: 298:1214, 312:4661, collections (1440).
+// Телефон и планшет: карусель со свайпом и точками, компьютер: 3 карточки в ряд.
+// Размеры в vw — пропорции макетов (карточка 294 из 360, 449 из 768, 449 из 1440),
+// поэтому карточки привязаны к краям и не меняются относительно экрана при масштабировании.
+// Макеты: 298:1214, 312:4661, collections (1440).
 const collections = [
   {
     label: "Los más vendidos",
@@ -53,8 +55,8 @@ export default function Collections() {
 
       <ScrollCarousel
         label="Colecciones destacadas"
-        trackClassName="mt-[30px] flex gap-3 scroll-px-[14px] px-[14px] md:mt-[50px] md:gap-[25px] md:scroll-px-4 md:px-4 lg:mx-auto lg:grid lg:max-w-[1397px] lg:grid-cols-3 lg:overflow-visible lg:px-0"
-        itemClassName="w-[294px] md:w-[449px] lg:w-auto"
+        trackClassName="mt-[30px] flex gap-[3.33vw] scroll-px-[3.89vw] px-[3.89vw] md:mt-[50px] md:gap-[3.26vw] md:scroll-px-[2.08vw] md:px-[2.08vw] lg:grid lg:grid-cols-3 lg:gap-[1.74vw] lg:overflow-visible lg:px-[1.49vw]"
+        itemClassName="w-[81.67vw] md:w-[58.46vw] lg:w-auto"
         dotsClassName="mt-6 lg:hidden"
       >
         {collections.map((c) => (
@@ -67,7 +69,7 @@ export default function Collections() {
               src={c.image}
               alt={c.alt}
               fill
-              sizes="(max-width: 767px) 294px, (max-width: 1023px) 449px, 31vw"
+              sizes="(max-width: 767px) 82vw, (max-width: 1023px) 59vw, 31vw"
               className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
               style={{ objectPosition: c.position }}
             />
