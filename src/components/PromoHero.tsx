@@ -15,7 +15,7 @@ export default function PromoHero({ as: Heading = "h1" }: { as?: "h1" | "h2" }) 
     <section className={`${metropolis.className} relative h-[280px] overflow-hidden bg-[#7D8494] md:h-[281px]`}>
       {/* Фото в макете больше блока и сдвинуто: девушка слева, справа — фон для текста */}
       <span className="absolute left-[-527px] top-[-197px] h-[617px] w-[1850px] md:left-[-209px] lg:left-[-2px] lg:top-[-267px] lg:h-[757px] lg:w-[2269px]">
-        <Image src="/regalos/promo.png" alt="" fill priority sizes="2269px" className="object-cover" />
+        <Image src="/regalos/promo-hd.png" alt="" fill priority sizes="2269px" className="object-cover" />
       </span>
 
       <div className="absolute left-1/2 top-[33px] flex w-[332px] -translate-x-1/2 flex-col items-center gap-[22px] md:left-[67.2%] md:top-[42px] md:w-auto lg:left-[61.8%]">

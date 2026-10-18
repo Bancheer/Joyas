@@ -113,7 +113,8 @@ const assets = [
   ["icons/trust-garantia.svg", "https://www.figma.com/api/mcp/asset/9a3a306e-f445-43c8-98d4-8728d9c74de3.svg"],
   ["icons/trust-envio.svg", "https://www.figma.com/api/mcp/asset/ee75dbbc-0616-440f-ac25-a88cfd81b47e.svg"],
   // ── Regalos (18.10) ──
-  ["regalos/promo.png", figma("c81df125-54a6-4475-92d2-b383a71a8ea4", "f8998.png")],
+  // Оригинал фото баннера в полном разрешении (4096×1367). Старый promo.png был уменьшенной копией 1024×342.
+  ["regalos/promo-hd.png", "https://www.figma.com/api/mcp/asset/1dc75013-77af-403b-b962-57ebc5720b2c"],
   ["icons/copy.svg", figma("c81df125-54a6-4475-92d2-b383a71a8ea4", "ad36f.svg")],
   // ── Quién somos (18.10) ──
   ["quien-somos/hero.png", figma("860bd314-9558-48e2-b519-1d1ed704a2a6", "c40ac.png")],
